@@ -1,0 +1,2 @@
+# Blog
+build by hexo
