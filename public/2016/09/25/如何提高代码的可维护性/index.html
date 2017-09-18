@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何提高代码的可维护性 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="维护性,迭代," />
+  
+
+  <meta name="description" content="在当下这个产品快速迭代的时代，分分钟一个新需求，动不动就改页面，如果在前期写代码的时候没有没有为后续的拓展做准备的话，简直能把一个程序员给玩死。 所以在本次项目中，总结了几点经验心得好让自己少被玩死几次。 善用gitgit是个好东西，提供了一套完整的代码管理方案。能让你随时将代码回滚到你想要的位置，当然前提是你拥有良好的提交代码的习惯。基于当下前端最流行的最佳化开发方式，我的建议是每开发完成一个组">
+<meta name="keywords" content="维护性,迭代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何提高代码的可维护性">
+<meta property="og:url" content="http://billqiu.github.io/2016/09/25/如何提高代码的可维护性/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="在当下这个产品快速迭代的时代，分分钟一个新需求，动不动就改页面，如果在前期写代码的时候没有没有为后续的拓展做准备的话，简直能把一个程序员给玩死。 所以在本次项目中，总结了几点经验心得好让自己少被玩死几次。 善用gitgit是个好东西，提供了一套完整的代码管理方案。能让你随时将代码回滚到你想要的位置，当然前提是你拥有良好的提交代码的习惯。基于当下前端最流行的最佳化开发方式，我的建议是每开发完成一个组">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-09-25T10:34:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何提高代码的可维护性">
+<meta name="twitter:description" content="在当下这个产品快速迭代的时代，分分钟一个新需求，动不动就改页面，如果在前期写代码的时候没有没有为后续的拓展做准备的话，简直能把一个程序员给玩死。 所以在本次项目中，总结了几点经验心得好让自己少被玩死几次。 善用gitgit是个好东西，提供了一套完整的代码管理方案。能让你随时将代码回滚到你想要的位置，当然前提是你拥有良好的提交代码的习惯。基于当下前端最流行的最佳化开发方式，我的建议是每开发完成一个组">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#善用git"><span class="toc-text">善用git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面布局的可拓展性"><span class="toc-text">页面布局的可拓展性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装多次调用的函数"><span class="toc-text">封装多次调用的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改代码前要充分思考"><span class="toc-text">修改代码前要充分思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不要轻易删代码"><span class="toc-text">不要轻易删代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遵从自己的思考"><span class="toc-text">遵从自己的思考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-如何提高代码的可维护性" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">如何提高代码的可维护性</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/09/25/如何提高代码的可维护性/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>在当下这个产品快速迭代的时代，分分钟一个新需求，动不动就改页面，如果在前期写代码的时候没有没有为后续的拓展做准备的话，简直能把一个程序员给玩死。</p>
+<p>所以在本次项目中，总结了几点经验心得好让自己少被玩死几次。</p>
+<h3 id="善用git"><a href="#善用git" class="headerlink" title="善用git"></a>善用git</h3><p><code>git</code>是个好东西，提供了一套完整的代码管理方案。能让你随时将代码回滚到你想要的位置，当然前提是你拥有良好的提交代码的习惯。基于当下前端最流行的最佳化开发方式，我的建议是每开发完成一个组件就提交一次代码，让你代码的模块划分更加清晰。</p>
+<h3 id="页面布局的可拓展性"><a href="#页面布局的可拓展性" class="headerlink" title="页面布局的可拓展性"></a>页面布局的可拓展性</h3><p>flex布局大法好，但是总是逃不过“兼容性”这个老生常谈的问题的魔爪。可以用flex布局当时舒爽，但是一定要考虑清楚应用环境。如果你全盘使用flex布局，当遇需要兼容的情况时，重新布局带给你的代码了是不是你所能接受的。</p>
+<h3 id="封装多次调用的函数"><a href="#封装多次调用的函数" class="headerlink" title="封装多次调用的函数"></a>封装多次调用的函数</h3><p>这点很重要，不仅仅是减少代码量的问题，如果一旦万一这个函数需要修改，你要做的不仅仅是一处的修改，而是所有用到这个函数的地方都要修改。人不是机器，不能做完美的全局检索，特备是在时间紧急代码量又大的情况下，难免会发生错误。</p>
+<h3 id="修改代码前要充分思考"><a href="#修改代码前要充分思考" class="headerlink" title="修改代码前要充分思考"></a>修改代码前要充分思考</h3><p>因为各种各样的原因有一个地方的代码需要作出修改，OK，这个地方改好了。但是，这是真的改好了，好好想想和其他地方的代码是不是有耦合，特别是对前后的代码逻辑是否会产生影响，真的只有这个地方的代码需要修改吗？</p>
+<h3 id="不要轻易删代码"><a href="#不要轻易删代码" class="headerlink" title="不要轻易删代码"></a>不要轻易删代码</h3><p>有时候我们会为了代码的漂亮干净就把以前写的不再需要的代码给删了，看上去趋势很爽，干净简洁。但是在删代码之前，一定要仔细想想这些代码以后是不是真的不会再用到了，自己当初为什么注释了这些代码而不是删除。删除的如果是页面的代码还好，如果删除了以后可能要用到的脚本代码，就要重新再跑一遍业务逻辑！删代码，爽一时啊！</p>
+<h3 id="遵从自己的思考"><a href="#遵从自己的思考" class="headerlink" title="遵从自己的思考"></a>遵从自己的思考</h3><p>在后期优化的时候，产品、交互、后端、测试可能会给你提出各种各样的问题，需要你去优化。这时候你就要对这些问题作出归纳整理，哪些是你可以做到的，哪些是你做不到的，哪些是你可以做到但当初没有这么做的，为什么没有做，是因为太费时费力，还是有其他原因，比如说会影响其他功能。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/07/24/Connext2016-掘金线下交流会/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/10/31/如何使用git-tag/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/09/25/如何提高代码的可维护性/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

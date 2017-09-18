@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>在无序列表li前增加圆点标识符的几种方式 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS,无序列表,HTML," />
+  
+
+  <meta name="description" content="前言在实际开发过程中，我们经常会用到ul&amp;gt;li标签，特别是对一系列样式相同且排列整齐的文档元素。在默认情况下，我们都会给ul添加一个属性list-style: none，这样就能去除li标签开头的一个实心点。因为去除ul样式的代码用习惯了(很多框架都重写了列表的默认样式)，以至于忘了list-style的存在。">
+<meta name="keywords" content="CSS,无序列表,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在无序列表li前增加圆点标识符的几种方式">
+<meta property="og:url" content="http://billqiu.github.io/2016/05/31/在无序列表li前增加原点标识符的几种方式/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="前言在实际开发过程中，我们经常会用到ul&amp;gt;li标签，特别是对一系列样式相同且排列整齐的文档元素。在默认情况下，我们都会给ul添加一个属性list-style: none，这样就能去除li标签开头的一个实心点。因为去除ul样式的代码用习惯了(很多框架都重写了列表的默认样式)，以至于忘了list-style的存在。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-06-01T01:41:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在无序列表li前增加圆点标识符的几种方式">
+<meta name="twitter:description" content="前言在实际开发过程中，我们经常会用到ul&amp;gt;li标签，特别是对一系列样式相同且排列整齐的文档元素。在默认情况下，我们都会给ul添加一个属性list-style: none，这样就能去除li标签开头的一个实心点。因为去除ul样式的代码用习惯了(很多框架都重写了列表的默认样式)，以至于忘了list-style的存在。">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list-style"><span class="toc-text">list-style</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#list-style-type"><span class="toc-text">list-style-type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-style-position"><span class="toc-text">list-style-position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-style-image"><span class="toc-text">list-style-image</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几种增加圆点标识符的方式"><span class="toc-text">几种增加圆点标识符的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认样式"><span class="toc-text">默认样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用before伪类"><span class="toc-text">使用before伪类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-style-image-1"><span class="toc-text">list-style-image</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-text">结语</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-在无序列表li前增加原点标识符的几种方式" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">在无序列表li前增加圆点标识符的几种方式</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/05/31/在无序列表li前增加原点标识符的几种方式/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在实际开发过程中，我们经常会用到<code>ul&gt;li</code>标签，特别是对一系列样式相同且排列整齐的文档元素。<br>在默认情况下，我们都会给<code>ul</code>添加一个属性<code>list-style: none</code>，这样就能去除<code>li</code>标签开头的一个实心点。<br>因为去除<code>ul</code>样式的代码用习惯了(很多框架都重写了列表的默认样式)，以至于忘了<code>list-style</code>的存在。<br><a id="more"></a></p>
+<h2 id="list-style"><a href="#list-style" class="headerlink" title="list-style"></a>list-style</h2><p>无序列表有一个CSS属性<code>list-style</code>，它其实是一个缩写，像<code>background</code>一样。<br><code>list-style</code>包含了三个属性<br><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">ul </span>&#123;</div><div class="line">    <span class="built_in">list-style-type:</span> <span class="string">disc;</span></div><div class="line">    <span class="built_in">list-style-position:</span> <span class="string">outside;</span></div><div class="line">    <span class="built_in">list-style-image:</span> <span class="string">none;</span></div><div class="line">&#125;</div><div class="line">/*<span class="string">Initial </span><span class="string">value*</span>/</div></pre></td></tr></table></figure></p>
+<h3 id="list-style-type"><a href="#list-style-type" class="headerlink" title="list-style-type"></a>list-style-type</h3><p>在原始的无序列表中默认会有一个实心小圆点就是因为<code>list-style-type: disc</code>这个属性。<br>说到<code>list-style-type</code>，其下包含的类别有太多太多，有需要的同学可以点<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type" target="_blank" rel="external">这里</a>看看。<br>会用的其实不多，主要有<code>circle, square, upper-roman, lower-alpha</code>等。</p>
+<h3 id="list-style-position"><a href="#list-style-position" class="headerlink" title="list-style-position"></a>list-style-position</h3><p>再说说<code>list-style-position</code></p>
+<blockquote>
+<p>list-style-position: inside|outside|initial|inherit;</p>
+</blockquote>
+<p>inside表示列表符包含在border以内，二outside则表示在border区域外。</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/bill_q/o0L8pb69/embedded/html,css,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3 id="list-style-image"><a href="#list-style-image" class="headerlink" title="list-style-image"></a>list-style-image</h3><p>至于<code>list-style-image</code>就更简单了，用图片代替标识符。</p>
+<h2 id="几种增加圆点标识符的方式"><a href="#几种增加圆点标识符的方式" class="headerlink" title="几种增加圆点标识符的方式"></a>几种增加圆点标识符的方式</h2><h3 id="默认样式"><a href="#默认样式" class="headerlink" title="默认样式"></a>默认样式</h3><p>首先说的就是默认样式，如果不对ul进行任何CSS修饰，默认每个<code>li</code>标签前都会有一个小黑点标识符。<br>但是从视觉效果上看，这个标识符看上去并不是居中的，而是要稍偏下。<br>所以通常情况下很少直接这样拿来使用，给我们的设计稿如果有这效果需要实现，标识符一般都是居中的。<br>因此就要用到以下方法了。</p>
+<h3 id="使用before伪类"><a href="#使用before伪类" class="headerlink" title="使用before伪类"></a>使用before伪类</h3><iframe width="100%" height="100" src="//jsfiddle.net/bill_q/upfupf51/embedded/html,css,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>从上述代码中可以看出使用before添加伪类和默认样式的差别，很明显，默认样式的标识符明显下沉，而且使用伪类可以改变标识符的颜色。<br><br>### 添加新元素<br>要实现一个实心小圆的标识符，可以自己绘制或者添加图片来实现。<br>自己绘制的话我们使用一个空的<code>&lt;i&gt;</code>标签。<br><iframe width="100%" height="200" src="//jsfiddle.net/bill_q/t0m7ka31/embedded/html,css,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>使用图片的道理也是一样的，通过<code>&lt;img&gt;</code>标签添加图片，在对其位置进行调整。但是使用图片存在一个问题，就是通常标识符的图片都比较小，会有图片失真的情况发生。</p>
+<h3 id="list-style-image-1"><a href="#list-style-image-1" class="headerlink" title="list-style-image"></a>list-style-image</h3><p>通过这种方式添加图片标识符很方便，但是调整标识符图片的位置很不灵活，所以一般很少采用。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>有时候经验主义会很大地限制我们的思维，让我们一条路走到黑。在写代码的时候，多问问为什么，这样做虽然正确，但是不是最合适的？</p>
+<p>End</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/05/17/background八日谈第六日：background-origin/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/06/19/毕业。/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/05/31/在无序列表li前增加原点标识符的几种方式/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

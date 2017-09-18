@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅谈line-height与vertical-align对行内元素位置的影响 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vertical-align,line-height,行内元素,位置," />
+  
+
+  <meta name="description" content="前言前几天在做项目的时候，突然遇到了一个文字下沉的问题。设法通过各种途径解决，在慕课网看了张老师的课程后，终于恍然大悟，问题得以解决。其实在看完课程后就想写篇博文来记录自己的学习收获，但是因为自己的拖延症一直拖到现在。庆幸的是当时做了比较详细的学习笔记，看看笔记还是能回忆起来一些。但是如果在学习完后能及时总结，收获肯定更大，能系统地描述自己的学习过程。在此立个flag，以后学习完一个知识点后一定要">
+<meta name="keywords" content="vertical-align,line-height,行内元素,位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈line-height与vertical-align对行内元素位置的影响">
+<meta property="og:url" content="http://billqiu.github.io/2016/07/01/浅谈line-height与vertical-align对行内元素位置的影响/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="前言前几天在做项目的时候，突然遇到了一个文字下沉的问题。设法通过各种途径解决，在慕课网看了张老师的课程后，终于恍然大悟，问题得以解决。其实在看完课程后就想写篇博文来记录自己的学习收获，但是因为自己的拖延症一直拖到现在。庆幸的是当时做了比较详细的学习笔记，看看笔记还是能回忆起来一些。但是如果在学习完后能及时总结，收获肯定更大，能系统地描述自己的学习过程。在此立个flag，以后学习完一个知识点后一定要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/yahei.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/Arial.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/move.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/line-height.png">
+<meta property="og:updated_time" content="2016-09-25T10:07:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈line-height与vertical-align对行内元素位置的影响">
+<meta name="twitter:description" content="前言前几天在做项目的时候，突然遇到了一个文字下沉的问题。设法通过各种途径解决，在慕课网看了张老师的课程后，终于恍然大悟，问题得以解决。其实在看完课程后就想写篇博文来记录自己的学习收获，但是因为自己的拖延症一直拖到现在。庆幸的是当时做了比较详细的学习笔记，看看笔记还是能回忆起来一些。但是如果在学习完后能及时总结，收获肯定更大，能系统地描述自己的学习过程。在此立个flag，以后学习完一个知识点后一定要">
+<meta name="twitter:image" content="http://billqiu.github.io/assets/blogImg/yahei.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#line-height"><span class="toc-text">line-height</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vertical-align"><span class="toc-text">vertical-align</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-浅谈line-height与vertical-align对行内元素位置的影响" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">浅谈line-height与vertical-align对行内元素位置的影响</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/07/01/浅谈line-height与vertical-align对行内元素位置的影响/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天在做项目的时候，突然遇到了一个文字下沉的问题。设法通过各种途径解决，在慕课网看了张老师的<a href="http://www.imooc.com/learn/542" target="_blank" rel="external">课程</a>后，终于恍然大悟，问题得以解决。<br>其实在看完课程后就想写篇博文来记录自己的学习收获，但是因为自己的拖延症一直拖到现在。庆幸的是当时做了比较详细的学习笔记，看看笔记还是能回忆起来一些。但是如果在学习完后能及时总结，收获肯定更大，能系统地描述自己的学习过程。<br>在此立个flag，以后学习完一个知识点后一定要及时总结回顾，一来能加深自己的理解，二来符合自己一贯推崇的“开源精神”。</p>
+<a id="more"></a>
+<h2 id="line-height"><a href="#line-height" class="headerlink" title="line-height"></a>line-height</h2><p>定义：两行文字基线之间的距离。</p>
+<p>那么问题来了，什么是基线？<br>用过英文写字本的童鞋应该都记得其中有一条红色的线，那条就是所谓的基线。<br>不同的字体基线所在的位置是不同的。<br>微软雅黑的基线与x的底部重合。<br><img src="/assets/blogImg/yahei.png" alt="微软雅黑"><br>而宋体和Arial字体则处于基线偏上的位置。<br><img src="/assets/blogImg/Arial.png" alt="Arial.png"></p>
+<p>应用<br>1、 使图片水平垂直居中<br>对父元素设置行高，注意是行高<code>line-height</code>而不是高度<code>height</code>，在子元素设置<code>vertical-align: middle</code>，图片就可实现垂直方向的居中。因为图片为<code>inline</code>水平的元素，所以为父元素设置<code>text-aline: center</code>即可实现水平居中。需要注意的一点是，此方法支持IE8及以上的浏览器。</p>
+<iframe height="265" scrolling="no" src="//codepen.io/bill_q/embed/wWqdaQ/?height=265&theme-id=dark&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/bill_q/pen/wWqdaQ/" target="_blank" rel="external">wWqdaQ</a> by bill (<a href="http://codepen.io/bill_q" target="_blank" rel="external">@bill_q</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<p>2、 使多行文本水平垂直居中</p>
+<iframe height="265" scrolling="no" src="//codepen.io/bill_q/embed/JKyWzK/?height=265&theme-id=dark&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/bill_q/pen/JKyWzK/" target="_blank" rel="external">JKyWzK</a> by bill (<a href="http://codepen.io/bill_q" target="_blank" rel="external">@bill_q</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<p>这里插一句，很多人为了让块级元素内的内容垂直居中，会吧高度和行高设置为相同的值。其实仅仅设置行高就可以达到想要的效果。</p>
+<h2 id="vertical-align"><a href="#vertical-align" class="headerlink" title="vertical-align"></a>vertical-align</h2><p>在上面的使用<code>vertical-align: middle</code>居中的例子中，如果你仔细看一下，其实是可以看出来此居中并非完全居中，而是近似居中。为什么呐？这和<code>vertical-align: middle</code>实现居中的原理有关：先看看<code>middle</code>的定义：</p>
+<blockquote>
+<p>元素中线与父元素的小写x中线对齐。</p>
+</blockquote>
+<p>但是在前面我们就说到了，每种字体都是有偏移量的，会相对于中线下沉或上移，所以导致了并不是绝对居中。偏移量的大小又受到字体大小的影响，<code>font-size</code>越大，偏移量越大。<br><img src="/assets/blogImg/move.png" alt="move"></p>
+<p>下面是一个很经典的例子。<br>默认状态下，图片和文字(不包括xbase)的<code>vertical-align</code>值都为baseline。细心的同学可能已经观察到了，在图片的下方，有一条几个像素的边，也就是说图片没有填充满整个容器，那么这条边是哪里来的呐？<br>其实就是vertical-align和line-height‘搞基’产生的。<br><img src="/assets/blogImg/line-height.png" alt="line-height"><br>如图一所示，图片的下边缘和小写字母x的下边缘是对齐的，也就是所谓的基线对齐。再对比图一和图二，图一中文字的<code>line-height</code>默认为<code>normal</code>，也就等于<code>height</code>为16px。图二的<code>line-height</code>为32px。这样就找出了问题所在的根源，在默认基线对齐的情况下，<code>line-height</code>影响了位置关系。<br>那么怎么样才能去除那条几个像素的边呐？<br>有两条思路：<br>1、 改变<code>vertical-align</code>对齐方式。<br>设置图片的<code>vertical-align</code>为middle、top、bottom；<br>在布局允许的情况下，可以改变图片的<code>display</code>水平为<code>block</code>，可以通过浮动、绝对定位等方法。<br>2、 修改<code>line-height</code>值。<br>将父元素的<code>line-height</code>设置为一个较小的值，直到边隙消失。<br>或者也可以改变父元素的<code>font-size</code>，因为<code>line-height</code>是根据<code>font-size</code>的大小决定的。</p>
+<p>这里有一个现象需要解释下，当图片的<code>vertical-align</code>设置为<code>top</code>时，发现文字上移和图片顶部对齐了。这又是为什么呢？<br>其实原理是这样的，图片为了和整行文字的顶部对齐而下移了，但是由于DOM元素都是向左向上对齐的，所以产生了一个盒子内整体内容上移的现象，看上去好像是文字上移和图片去对齐。<br>在同一个包含盒子(containing box)内，如果使用<code>vertical-align</code>对行框盒子(line boxes)的位置进行调整，其相互之间的位置是互不影响的。</p>
+<iframe height="265" scrolling="no" src="//codepen.io/bill_q/embed/jAmYKg/?height=265&theme-id=dark&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/bill_q/pen/jAmYKg/" target="_blank" rel="external">jAmYKg</a> by bill (<a href="http://codepen.io/bill_q" target="_blank" rel="external">@bill_q</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<p>参考文献：</p>
+<ol>
+<li><a href="http://www.imooc.com/learn/542" target="_blank" rel="external">慕课网</a></li>
+<li><a href="https://developer.mozilla.org" target="_blank" rel="external">MDN</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/" target="_blank" rel="external">张老师的博客</a></li>
+</ol>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/06/19/毕业。/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/07/08/在mac上使用docker部署gitlab/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/07/01/浅谈line-height与vertical-align对行内元素位置的影响/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

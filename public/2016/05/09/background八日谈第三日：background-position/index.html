@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>background八日谈第三日：background-position | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS,background-position," />
+  
+
+  <meta name="description" content="简介首先从字面上理解background-positio——背景位置，那这里的背景指的是什么呐？当然是background-image啦，对背景图片的位置进行调整。 兼容性还是老样子，IE8以下不兼容。">
+<meta name="keywords" content="CSS,background-position">
+<meta property="og:type" content="article">
+<meta property="og:title" content="background八日谈第三日：background-position">
+<meta property="og:url" content="http://billqiu.github.io/2016/05/09/background八日谈第三日：background-position/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="简介首先从字面上理解background-positio——背景位置，那这里的背景指的是什么呐？当然是background-image啦，对背景图片的位置进行调整。 兼容性还是老样子，IE8以下不兼容。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-05-09T08:55:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="background八日谈第三日：background-position">
+<meta name="twitter:description" content="简介首先从字面上理解background-positio——背景位置，那这里的背景指的是什么呐？当然是background-image啦，对背景图片的位置进行调整。 兼容性还是老样子，IE8以下不兼容。">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-text">兼容性</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-background八日谈第三日：background-position" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">background八日谈第三日：background-position</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/05/09/background八日谈第三日：background-position/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>首先从字面上理解background-positio——背景位置，那这里的背景指的是什么呐？<br>当然是<a href="http://billqiu.com/2016/04/14/background%E5%85%AB%E6%97%A5%E8%B0%88%E7%AC%AC%E4%B8%80%E6%97%A5%EF%BC%9Abackground-image/" target="_blank" rel="external">background-image</a>啦，对背景图片的位置进行调整。</p>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><iframe id="rewYxL" src="http://caniuse.com/css-background-offsets/embed" scrolling="no" frameborder="0" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe undefined" style="width: 100%; overflow: hidden;"></iframe><br>还是老样子，IE8以下不兼容。<br><a id="more"></a><br>## 三种描述方式<br>- 数值(e.g. 100px 5px)<br>- 百分比(e.g. 100% 5%)<br>- 关键词(e.g. top right)<br><br>### 数值<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.lengthvalue</span> &#123;</div><div class="line">    <span class="attribute">background-position</span>: <span class="number">10px</span> <span class="number">10px</span>;</div><div class="line">    <span class="comment">//向右偏移10个像素，向下偏移10个像素。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>如果不对background-position进行赋值，背景图片默认从右上角开始排列。<br>如果有2个描述，第一个表示水平方向上距离左边的偏移量，第二个表示垂直方向上距离上边的偏移量。(负值则相反)<br>不仅仅的是px，任何CSS的单位比如<code>em</code>、<code>rem</code>都可以用于其中。<br><br>### 百分比<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.prcentages</span> &#123;</div><div class="line">    <span class="attribute">background-position</span>: <span class="number">10%</span> <span class="number">10%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>百分比描述方式的偏移规则与用数值描述的相同。<code>10%</code>表示背景图片的中线与容器1/10处的分割线对齐。<br>最长的用<code>background-position: 50%</code>表示背景图片在容器的正中央(当只填写第一个数值时，第二个数值默认与第二个相同)。<br><br>### 关键词<br>一共有5个关键词<code>left</code>、<code>right</code>、<code>top</code>、<code>buttom</code>、<code>center</code>。<br><code>left</code>：水平方向最左边<br><code>right</code>：水平方向最右边<br><code>top</code>：垂直方向最上边<br><code>buttom</code>：垂直方向最下边<br><code>center</code>：居中<br>这里有一个小tips <code>background-position: top center</code> = <code>background-position: center top</code>。当且仅当使用关键词描述时才有效。<br><br>## 声明数值的方式<br>我们可以使用1个数值来描述位置，也可以用两个。<br>甚至，可是使用三个或四个！<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#threevalues &#123;</span></div><div class="line">  <span class="built_in">background</span>-<span class="built_in">position</span>: right <span class="number">45</span>px bottom;</div><div class="line">  <span class="comment">//表示距离右边45个像素，置底。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#fourvalues &#123;</span></div><div class="line">  <span class="built_in">background</span>-<span class="built_in">position</span>: right <span class="number">45</span>px bottom <span class="number">20</span>px;</div><div class="line">  <span class="comment">//表示距离右边45个像素，距离底边20个像素。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>上述规则也很简单，先声明一个关键字，再进行百分比或数值进行具体描述。<br><br>## background-position-x/y<br>有时我们仅需要对背景图片的一个方向进行调整，便会用到<code>background-position-x</code>或<code>background-position-y</code>。<br>使用方法完全可以参照上文，但有一点需要注意，那就是兼容性。火狐浏览器对此属性的兼容性很差。<br><iframe id="rewYxL" src="http://caniuse.com/background-position-x-y/embed" scrolling="no" frameborder="0" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe undefined" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>TO BE CONTINUED!</p>
+<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="external">css-tricks</a></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/05/05/background八日谈第二日：background-color/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/13/background八日谈第四日：background-size/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/05/09/background八日谈第三日：background-position/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

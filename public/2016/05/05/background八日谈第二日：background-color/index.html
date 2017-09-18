@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>background八日谈第二日：background-color | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="background,css,background-color,RGBA,HSLA," />
+  
+
+  <meta name="description" content="三种显示颜色的方式)">
+<meta name="keywords" content="background,css,background-color,RGBA,HSLA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="background八日谈第二日：background-color">
+<meta property="og:url" content="http://billqiu.github.io/2016/05/05/background八日谈第二日：background-color/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="三种显示颜色的方式)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/color-style.png">
+<meta property="og:updated_time" content="2016-05-05T05:22:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="background八日谈第二日：background-color">
+<meta name="twitter:description" content="三种显示颜色的方式)">
+<meta name="twitter:image" content="http://billqiu.github.io/assets/blogImg/color-style.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#三种显示颜色的方式"><span class="toc-text">三种显示颜色的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HEX"><span class="toc-text">HEX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#color-name"><span class="toc-text">color name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RGBA"><span class="toc-text">RGBA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HSLA"><span class="toc-text">HSLA</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-background八日谈第二日：background-color" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">background八日谈第二日：background-color</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.05</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/05/05/background八日谈第二日：background-color/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="三种显示颜色的方式"><a href="#三种显示颜色的方式" class="headerlink" title="三种显示颜色的方式"></a>三种显示颜色的方式</h2><p><img src="/assets/blogImg/color-style.png" alt="颜色">)<br><a id="more"></a></p>
+<h3 id="HEX"><a href="#HEX" class="headerlink" title="HEX"></a>HEX</h3><p>先说说HEX，最常见的颜色表达方式。<br>PS: 此HEX非彼hex(贺老)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#fffff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码中的<code>#fffff</code>就是HEX的颜色描述方式，也可以简写成<code>#fff</code>，一看就能明白的东西，不多说了。</p>
+<h3 id="color-name"><a href="#color-name" class="headerlink" title="color name"></a>color name</h3><p>如果想要用白色作为背景色，可以这样写:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: white;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>因为颜色的多样，并不是没种颜色都可以通过<code>color name</code>来表示。在实际开发中用的比较好，更多用在调试中。<br>想要知道更多颜色的名字，可以看<a href="https://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/" target="_blank" rel="external">这里</a>。</p>
+<h3 id="RGBA"><a href="#RGBA" class="headerlink" title="RGBA"></a>RGBA</h3><p>RGBA的颜色描述方式大家肯定也很熟悉了<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.8); <span class="comment">/* 80% Black */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>R:red, B:blue, G:green, A:alpha 通过三原色的配比获取我们想要的任何颜色，通过alpha值调节颜色的透明度。<br><code>RGBA</code>的浏览器支持性很好，除了IE8及以下浏览器都支持这个属性。<br>如果项目不需要支持IE8及以下浏览器，但是用到了RGBA，可以使用一个<em>Fallback</em>实现向下兼容。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html &#123;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: rgb(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.8</span>);  /Fallback/</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.8</span>); <span class="comment">/* 80% Black */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当需要在IE8及以下浏览器中实现RGBA的效果时，就需要用到<code>Microsoft CSS filter</code>了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!--[<span class="keyword">if</span> IE]&gt;</div><div class="line">   &lt;style type=<span class="string">"text/css"</span>&gt;</div><div class="line"></div><div class="line">   .color-block &#123;</div><div class="line">       background:transparent;</div><div class="line">       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50990000,endColorstr=#50990000);</div><div class="line">       zoom: <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    &lt;<span class="regexp">/style&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;![endif]--&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="HSLA"><a href="#HSLA" class="headerlink" title="HSLA"></a>HSLA</h3><p>这种颜色的表达方式比较少见，至于为什么，我也清楚。有国外的大神说可能是因为<code>HSLA</code>的色值比较难获取。<br>Hue、Saturation、Lightness and alpha分别代表色调、饱和度、亮度和透明度。<br>从理性的角度来说，用HSLA更容易创造出自己想要的颜色。</p>
+<ol>
+<li>改变第二个数值，会使颜色的饱和度发生变化。</li>
+<li>改变第三个数值，使颜色的亮度发生变化。</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#some-element</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="built_in">hsla</span>(170, 50%, 45%, 1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>HSLA</code>的兼容性与RGBA相同，可以使用RGBA的地方都可以是使用HSLA代替。</p>
+<iframe id="rewYxL" src="http://caniuse.com/css3-colors/embed" scrolling="no" frameborder="0" height="300" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe undefined" style="width: 100%; overflow: hidden;"></iframe>
+
+
+<p>TO BE CONTINUED!</p>
+<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="external">css-tricks</a></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/04/14/background八日谈第一日：background-image/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/09/background八日谈第三日：background-position/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/05/05/background八日谈第二日：background-color/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

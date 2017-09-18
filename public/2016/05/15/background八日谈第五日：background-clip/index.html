@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>background八日谈第五日：background-clip | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="background,CSS3,background-clip," />
+  
+
+  <meta name="description" content="简介background-clip是CSS3中新加入属性，用来设置元素的背景（背景图片或颜色）是否延伸到边框下面。 123.border &amp;#123;    background-clip: border-box;   //默认值&amp;#125; 值(Values)background-clip一共有三个值：  border-box默认值，背景延伸到边框外沿（但是在边框之下）。 padding-box">
+<meta name="keywords" content="background,CSS3,background-clip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="background八日谈第五日：background-clip">
+<meta property="og:url" content="http://billqiu.github.io/2016/05/15/background八日谈第五日：background-clip/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="简介background-clip是CSS3中新加入属性，用来设置元素的背景（背景图片或颜色）是否延伸到边框下面。 123.border &amp;#123;    background-clip: border-box;   //默认值&amp;#125; 值(Values)background-clip一共有三个值：  border-box默认值，背景延伸到边框外沿（但是在边框之下）。 padding-box">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-05-15T10:31:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="background八日谈第五日：background-clip">
+<meta name="twitter:description" content="简介background-clip是CSS3中新加入属性，用来设置元素的背景（背景图片或颜色）是否延伸到边框下面。 123.border &amp;#123;    background-clip: border-box;   //默认值&amp;#125; 值(Values)background-clip一共有三个值：  border-box默认值，背景延伸到边框外沿（但是在边框之下）。 padding-box">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#值-Values"><span class="toc-text">值(Values)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例-Demo"><span class="toc-text">示例(Demo)</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-background八日谈第五日：background-clip" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">background八日谈第五日：background-clip</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/05/15/background八日谈第五日：background-clip/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>background-clip</code>是CSS3中新加入属性，用来设置元素的背景（背景图片或颜色）是否延伸到边框下面。</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">border</span> &#123;</div><div class="line">    <span class="built_in">background</span>-clip: <span class="built_in">border</span>-<span class="built_in">box</span>;   //默认值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="值-Values"><a href="#值-Values" class="headerlink" title="值(Values)"></a>值(Values)</h3><p><code>background-clip</code>一共有三个值：</p>
+<ol>
+<li>border-box<br>默认值，背景延伸到边框外沿（但是在边框之下）。</li>
+<li>padding-box<br>边框下面没有背景，即背景延伸到内边距外沿。</li>
+<li>content-box<br>背景裁剪到内容区 (content-box) 外沿。<a id="more"></a>
+</li>
+</ol>
+<h2 id="示例-Demo"><a href="#示例-Demo" class="headerlink" title="示例(Demo)"></a>示例(Demo)</h2><p><iframe width="100%" height="300" src="//jsfiddle.net/bill_q/rm4tov8q/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>上述4个例子的HTML代码结构完全相同，为div设置的背景颜色为黄色，边框颜色为半透明的蓝色。<br>当<code>background-clip</code>的值为默认值<code>border-box</code>时，可以看到边框的颜色变成了灰色。这是因为div的背景颜色延伸到了边框外沿，背景色黄色和边框的半透明蓝色混合在一起显示为灰色。<br>当<code>background-clip</code>的值为<code>padding-box</code>时，div的背景色被限制在外边框之内，外边框的颜色为呈现为当初设置的半透明蓝。<br>当<code>background-clip</code>的值为<code>content-box</code>时，只有div中的内容——p标签——的背景色为黄色。div的padding和border没有背景色。这里需要注意一点，div容器内的p标签的整个盒模型(padding+marging+content)都会有黄色的背景色。</p>
+<p>TO BE CONTINUED!</p>
+<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="external">css-tricks</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank" rel="external">MDN</a></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/05/13/background八日谈第四日：background-size/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/17/background八日谈第六日：background-origin/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/05/15/background八日谈第五日：background-clip/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

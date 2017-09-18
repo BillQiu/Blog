@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>给table交的一点学费 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="table,display,盒模型," />
+  
+
+  <meta name="description" content="最近在做公司的一个项目，项目团队还挺大，整个团队加起来有10多个人，向我这样的小前端也就只有打打杂的份了 = =以前做的都是一些静态页面为主的工作，这次的项目则需要前后端交互，各种接口的调用，一个完整web项目从零开始，对我来说真是一个很好的学习的机会。 项目前期的工作当然还是以搭静态页面为主，其中必然遇到了不少的坑，且听我慢慢道来。 关于table布局现代的网页，已经很少看到table元素了，除">
+<meta name="keywords" content="table,display,盒模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给table交的一点学费">
+<meta property="og:url" content="http://billqiu.github.io/2016/04/12/table布局引发的“血案”/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="最近在做公司的一个项目，项目团队还挺大，整个团队加起来有10多个人，向我这样的小前端也就只有打打杂的份了 = =以前做的都是一些静态页面为主的工作，这次的项目则需要前后端交互，各种接口的调用，一个完整web项目从零开始，对我来说真是一个很好的学习的机会。 项目前期的工作当然还是以搭静态页面为主，其中必然遇到了不少的坑，且听我慢慢道来。 关于table布局现代的网页，已经很少看到table元素了，除">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/table.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/boxmodel.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/IEbox.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/point.png">
+<meta property="og:updated_time" content="2016-04-13T11:31:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给table交的一点学费">
+<meta name="twitter:description" content="最近在做公司的一个项目，项目团队还挺大，整个团队加起来有10多个人，向我这样的小前端也就只有打打杂的份了 = =以前做的都是一些静态页面为主的工作，这次的项目则需要前后端交互，各种接口的调用，一个完整web项目从零开始，对我来说真是一个很好的学习的机会。 项目前期的工作当然还是以搭静态页面为主，其中必然遇到了不少的坑，且听我慢慢道来。 关于table布局现代的网页，已经很少看到table元素了，除">
+<meta name="twitter:image" content="http://billqiu.github.io/assets/blogImg/table.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于table布局"><span class="toc-text">关于table布局</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-table布局引发的“血案”" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">给table交的一点学费</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/04/12/table布局引发的“血案”/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近在做公司的一个项目，项目团队还挺大，整个团队加起来有10多个人，向我这样的小前端也就只有打打杂的份了 = =<br>以前做的都是一些静态页面为主的工作，这次的项目则需要前后端交互，各种接口的调用，一个完整web项目从零开始，对我来说真是一个很好的学习的机会。</p>
+<p>项目前期的工作当然还是以搭静态页面为主，其中必然遇到了不少的坑，且听我慢慢道来。</p>
+<h2 id="关于table布局"><a href="#关于table布局" class="headerlink" title="关于table布局"></a>关于table布局</h2><p>现代的网页，已经很少看到<code>table</code>元素了，除非是非常标准的表格，用<code>table</code>实现效率远高于其他布局方式，不然，永远不推荐使用<code>table</code>！永远不推荐使用<code>table</code>！！永远不推荐使用<code>table</code>！！！<br>在这里向当年使用table布局的老同志们致以深深的敬意。</p>
+<p>display大家肯定都知道，我是一个喜欢刨根问底的人，曾经查阅过display相关的文档资料，其中有将近有一半的属性和table有关，因为很少用到，又嫌麻烦，便没有去做多深入了解，知道今天遇到了，才被好好地坑了一把。</p>
+<p><img src="/assets/blogImg/table.png" alt="table"><br><a id="more"></a><br>上面是我整理的一些table标签和相关display的脑图，看晕了没？<br>既然说到了display，就不得不说W3C标准盒模型<br><img src="/assets/blogImg/boxmodel.png" alt="boxmodel"><br>这是一个标准的W3C盒模型图，内容(content)+边框(border)+内边距(padding)+外边距(margin)。<br>在早期的IE浏览器中，存在一个怪异盒模型。<br><img src="/assets/blogImg/IEbox.png" alt="IEbox"><br>如上图所示，标准盒子模型中content = 怪异盒模型中content+padding+border。<br>换句话说，在怪异盒模型中，如果你设置了border值和padding值，会呈现出一个比遵从标准行为的结果更窄或者更短的盒子。<br>再换个角度来说，当我们在标准盒模型中给一个元素定宽时，如果给它设置了padding和border，就会得到一个比实际更宽的效果。如果要得到想要的效果，就需要在宽度值中减去padding和border的值。<br>为了避免上述情况，<code>box-sizing: border-box;</code>横空出世，demo可以戳<a href="http://zh.learnlayout.com/box-sizing.html" target="_blank" rel="external">这里</a>。</p>
+<p>在table中，常用的tr,td,th,tbody都是不符合标准盒模型的，所以一些常用的CSS属性是无法设置的，也就导致了无法设置一些常用样式。比如：</p>
+<ul>
+<li>background 是正常的，除了tbody、tfoot、thead都可以用，</li>
+<li>text-align、text-indent 等文字相关属性，只对单元格有效，但是可以被继承。 *margin 只在 table 上有效，对 td th 等等无效。</li>
+<li>border 只在 table、td、th、caption 有效，对 thead、tbody、tfoot、tr 等无效。</li>
+<li>padding、overflow、vertical-align 只对单元格有效。</li>
+<li>height 在表格、行和单元格上有效，但其值只能作为最小高度，因为内容总是会扩大单元格、行以及表格的高度。如果使用 display 将其改成 block 块级元素，就会溢出而不会扩大。</li>
+</ul>
+<p>table中还有一个大坑就是设置表格线框。<br>一般我们在表格内画线框，都是为<code>td</code>设置<code>border</code>属性。<br>今天在做项目时，却碰到了这样一个问题，<br><img src="/assets/blogImg/point.png" alt="point"><br>没错，就是中间那一个小小的像素点，差点没我搞死。<br>如果你的表格基础不错，应该一眼就能看出问题的所在。<br>如果你真看不出，可以先想想为什么会有这一个像素点的存在。<br>表格的是典型的“井”字形布局，有横就有竖。想到了吗，那一点就是默认存在的白色竖边框。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;table <span class="attribute">cellspacing</span>=<span class="string">"0"</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>使用以上代码完美解决问题。<br>这里有一点需要注意的是，在HTML5中，已经移除了这个属性，推荐使用CSS的<code>border-spacing</code>来设置。</p>
+<p>以上就是给<code>table</code>交的一点学费，与君共勉！</p>
+<p><br><br>参考文献：</p>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/IE%E7%9B%92%E6%A8%A1%E5%9E%8B%E7%BC%BA%E9%99%B7" target="_blank" rel="external">https://zh.wikipedia.org/wiki/IE%E7%9B%92%E6%A8%A1%E5%9E%8B%E7%BC%BA%E9%99%B7</a></li>
+<li><a href="http://yujiangshui.com/about-table/" target="_blank" rel="external">http://yujiangshui.com/about-table/</a></li>
+<li><a href="http://zh.learnlayout.com/box-model.html" target="_blank" rel="external">http://zh.learnlayout.com/box-model.html</a></li>
+</ol>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/03/24/再见，考拉。/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/04/14/background八日谈第一日：background-image/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/04/12/table布局引发的“血案”/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何获取CSS的属性值 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,jQuery," />
+  
+
+  <meta name="description" content="前言说到通过JS获取CSS的属性值，大家首先想到的一般是通过element.style.attr方法来获取。或者通过jQuery的.css()获取。但是不知道你有没有想过，jQuery是怎么获取的呐？其实我也没有想过这个问题 = =只是今天在学习JS动画的时候，碰到了JS的getComputedStyle方法，通过查阅一系列的资料，总结了以下几种获取CSS属性值的方法。 概述在这篇博文中，我打算介">
+<meta name="keywords" content="JavaScript,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何获取CSS的属性值">
+<meta property="og:url" content="http://billqiu.github.io/2016/02/24/如何获取CSS的属性值/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="前言说到通过JS获取CSS的属性值，大家首先想到的一般是通过element.style.attr方法来获取。或者通过jQuery的.css()获取。但是不知道你有没有想过，jQuery是怎么获取的呐？其实我也没有想过这个问题 = =只是今天在学习JS动画的时候，碰到了JS的getComputedStyle方法，通过查阅一系列的资料，总结了以下几种获取CSS属性值的方法。 概述在这篇博文中，我打算介">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/DOM2.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/getAttributeSuport.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/getComputedStyle的兼容性.png">
+<meta property="og:updated_time" content="2016-02-25T02:35:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何获取CSS的属性值">
+<meta name="twitter:description" content="前言说到通过JS获取CSS的属性值，大家首先想到的一般是通过element.style.attr方法来获取。或者通过jQuery的.css()获取。但是不知道你有没有想过，jQuery是怎么获取的呐？其实我也没有想过这个问题 = =只是今天在学习JS动画的时候，碰到了JS的getComputedStyle方法，通过查阅一系列的资料，总结了以下几种获取CSS属性值的方法。 概述在这篇博文中，我打算介">
+<meta name="twitter:image" content="http://billqiu.github.io/assets/blogImg/DOM2.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery方法"><span class="toc-text">jQuery方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原生JS方法"><span class="toc-text">原生JS方法</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-如何获取CSS的属性值" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">如何获取CSS的属性值</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.24</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/02/24/如何获取CSS的属性值/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说到通过JS获取CSS的属性值，大家首先想到的一般是通过<code>element.style.attr</code>方法来获取。<br>或者通过jQuery的<code>.css()</code>获取。<br>但是不知道你有没有想过，jQuery是怎么获取的呐？<br>其实我也没有想过这个问题 = =<br>只是今天在学习JS动画的时候，碰到了JS的<code>getComputedStyle</code>方法，通过查阅一系列的资料，总结了以下几种获取CSS属性值的方法。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在这篇博文中，我打算介绍三种获取CSS属性值的方法。对于只想知其然的朋友，可能会觉得比较啰嗦。但是个人认为在对一个问题钻研的越深入，在下次碰到时才能举一反三，迎刃而解。</p>
+<ol>
+<li>通过jQuery的<code>.css()</code>获取属性</li>
+<li>通过原生JS的<code>element.style.attr</code>方法获取</li>
+<li>通过<code>getComputedStyle()</code>获取<a id="more"></a>
+<h2 id="jQuery方法"><a href="#jQuery方法" class="headerlink" title="jQuery方法"></a>jQuery方法</h2><strong>.css( propertyName )</strong><br>通过<code>.css(&quot;background-color&quot;)</code>可以获取元素的背景颜色，同时用<code>.css(&quot;backgroundColor&quot;)</code>也可以获取元素的背景颜色。其中的”background-color”是用multiple-word格式化的DOM属性的写法，而在JS中获取背景颜色，通过以下代码：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">document</span><span class="selector-class">.body</span><span class="selector-class">.style</span><span class="selector-class">.backgroundColor</span>;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>需要<strong>注意</strong>的是，<strong>简写速写</strong>的CSS属性(例如： margin, background, border) 是不支持的，例如，如果你想重新获取margin，可以使用$(elem).css(‘marginTop’) 和 $(elem).css(‘marginRight’)，其他的也是如此。</p>
+<p>从jQuery1.9开始，添加了<code>.css( propertyNames )</code>,可以匹配元素的多个属性值。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">( elem ).css([ <span class="string">"borderTopWidth"</span>, <span class="string">"borderRightWidth"</span>, <span class="string">"borderBottomWidth"</span>; <span class="string">"borderLeftWidth"</span> ])</span></div></pre></td></tr></table></figure></p>
+<h2 id="原生JS方法"><a href="#原生JS方法" class="headerlink" title="原生JS方法"></a>原生JS方法</h2><p><strong>1. style方法</strong><br>通过element.style不仅可以获取元素的属性值，还可以设置属性值，可读可写。</p>
+<p><strong>2. getComputedStyle方法</strong></p>
+<blockquote>
+<p>The getComputedStyle() method gets all the actual (computed) CSS property and values of the specified element.The computed style is the style acutally used in displaying the element, after stylings from multiple sources have been apllied.</p>
+</blockquote>
+<p>简单翻译下就是说getComputedStyle方法返回指定元素所有CSS属性和值，也就是最终显示出来的样式值。相比于style方法，getComputedStyle返回一个CSS样式声明对象([object CSSStyleDeclaration])，<strong>只读</strong>。还有一点很大的区别，getComputedStyle返回的是最终显示在页面上的样式的属性值。</p>
+<blockquote>
+<p>window.getComputedStyle(element, pseudoElement)</p>
+</blockquote>
+<p><strong>getPropertyValue方法</strong><br>getPropertyValue方法可以获取CSS样式申明对象上的属性值（直接属性名称）<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle(element, <span class="literal">null</span>).getPropertyValue(<span class="string">"float"</span>);</div></pre></td></tr></table></figure></p>
+<p>如果不使用getPropertyValue方法，也可以使用键值的方式访问。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle(element, <span class="literal">null</span>).[];</div></pre></td></tr></table></figure></p>
+<p>但是使用键值存在一个问题，要获取float属性时，需要判断使用cssFloat还是还是styleFloat(for IE)，比较麻烦。<br>由于getPropertyValue不支持驼峰命名法，当遇到用“-”连接的属性时，：<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">style.getPropertyValue(<span class="string">"border-top-left-radius"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>getPropertyValue方法虽然好用，但是是DOM2的方法，IE9以上才支持。So。。。<br><img src="/assets/blogImg/DOM2.png" alt="DOM2"><br><br><br><strong>getAttribute方法</strong><br><img src="/assets/blogImg/getAttributeSuport.png" alt="getAttributeSuport"><br>从上图可以看出，<a href="http://www.w3schools.com/jsref/met_element_getattribute.asp" target="_blank" rel="external">getAttribute方法</a>对浏览器全支持。<br>张老师给的<a href="http://www.zhangxinxu.com/study/201205/getpropertyvalue-getAttribute-background-color.html" target="_blank" rel="external">例子</a><br>需要注意的一点是，getAttribute方法需要属性名用驼峰写法<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">style.getAttribute(<span class="string">"backgroundColor"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>并且不需要<code>cssFloat</code>与<code>styleFloat</code>的兼容写法，可以直接float<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">style.getAttribute(<span class="string">"float"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p><br><br><strong>getComputedStyle的兼容性</strong><br><img src="/assets/blogImg/getComputedStyle的兼容性.png" alt=" getComputedStyle的兼容性"><br>从上图中，可以看出getComputedStyle是不支持IE8及以下浏览器的。<br>但是IE自己提供了一个currentStyle方法。在查阅相关资料时，Mozilla开发者中心是这样描述的：</p>
+<blockquote>
+<p>Element.currentStyle is a property which is a proprietary alternative to the standardized window.getComputedStyle method. It is available in old versions of Microsoft Internet Explorer.</p>
+</blockquote>
+<p>如果有使用需要的，可以去微软的开发者中心查阅。  <a href="https://msdn.microsoft.com/en-us/library/ms535231(v=vs.85).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/ms535231(v=vs.85).aspx</a></p>
+<p><strong>3. style与getComputedStyle的区别</strong></p>
+<p>下面看一个例子:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">		<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">			<span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">"p"</span>);</span></div><div class="line"><span class="actionscript">			<span class="keyword">var</span> calcWidth = getComputedStyle(p,<span class="literal">null</span>)[<span class="string">"width"</span>];</span></div><div class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="string">"pWidth = "</span> + p.style.width);  <span class="comment">//0</span></span></div><div class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="string">"calcWidth = "</span> + calcWidth);   <span class="comment">//与浏览器宽度相关</span></span></div><div class="line"><span class="undefined">		&#125;;</span></div><div class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>	</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>p元素为块级元素，所以宽度为浏览器视口的宽度(减去各种边距值)。<br><br></p>
+<p>参考文献：</p>
+<ol>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/</a></li>
+<li><a href="http://www.w3schools.com/jsref/jsref_getcomputedstyle.asp" target="_blank" rel="external">http://www.w3schools.com/jsref/jsref_getcomputedstyle.asp</a></li>
+<li><a href="http://www.jquery123.com/css/" target="_blank" rel="external">http://www.jquery123.com/css/</a></li>
+</ol>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/02/14/关于爱、包容与死亡/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/03/05/关于前端自学的学习思路/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/02/24/如何获取CSS的属性值/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于前端自学的学习思路 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="个人感悟,自学经验," />
+  
+
+  <meta name="description" content="写在前面的一些话其实本来想写的文章并不是这一篇，而是想做一个技术的分享。后来在google的过程中，发现有人早就写好了我想写的内容，而且我自认为打不到他的水平。继续写原来的文章，肯定会受到很大程度上的影响。且不说算不算抄袭，万一别人看了我的文章之后发现还有更好的，不也浪费了他人的时间吗？ 曾经在知乎上看到过这样一句话：  如果你不能通过自学来达到能找到工作的水平，那你还是放弃程序员这个职业吧。">
+<meta name="keywords" content="个人感悟,自学经验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于前端自学的学习思路">
+<meta property="og:url" content="http://billqiu.github.io/2016/03/05/关于前端自学的学习思路/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="写在前面的一些话其实本来想写的文章并不是这一篇，而是想做一个技术的分享。后来在google的过程中，发现有人早就写好了我想写的内容，而且我自认为打不到他的水平。继续写原来的文章，肯定会受到很大程度上的影响。且不说算不算抄袭，万一别人看了我的文章之后发现还有更好的，不也浪费了他人的时间吗？ 曾经在知乎上看到过这样一句话：  如果你不能通过自学来达到能找到工作的水平，那你还是放弃程序员这个职业吧。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/more.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/border.png">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/triangle.png">
+<meta property="og:updated_time" content="2016-03-05T06:20:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于前端自学的学习思路">
+<meta name="twitter:description" content="写在前面的一些话其实本来想写的文章并不是这一篇，而是想做一个技术的分享。后来在google的过程中，发现有人早就写好了我想写的内容，而且我自认为打不到他的水平。继续写原来的文章，肯定会受到很大程度上的影响。且不说算不算抄袭，万一别人看了我的文章之后发现还有更好的，不也浪费了他人的时间吗？ 曾经在知乎上看到过这样一句话：  如果你不能通过自学来达到能找到工作的水平，那你还是放弃程序员这个职业吧。">
+<meta name="twitter:image" content="http://billqiu.github.io/assets/blogImg/more.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#写在前面的一些话"><span class="toc-text">写在前面的一些话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引子"><span class="toc-text">引子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理清思路"><span class="toc-text">理清思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说说border"><span class="toc-text">说说border</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他实现三角形的方法"><span class="toc-text">其他实现三角形的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以回归正题了"><span class="toc-text">可以回归正题了</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-关于前端自学的学习思路" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">关于前端自学的学习思路</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.05</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/03/05/关于前端自学的学习思路/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="写在前面的一些话"><a href="#写在前面的一些话" class="headerlink" title="写在前面的一些话"></a>写在前面的一些话</h3><p>其实本来想写的文章并不是这一篇，而是想做一个技术的分享。后来在google的过程中，发现有人早就写好了我想写的内容，而且我自认为打不到他的水平。继续写原来的文章，肯定会受到很大程度上的影响。且不说算不算抄袭，万一别人看了我的文章之后发现还有更好的，不也浪费了他人的时间吗？</p>
+<p>曾经在知乎上看到过这样一句话：</p>
+<blockquote>
+<p>如果你不能通过自学来达到能找到工作的水平，那你还是放弃程序员这个职业吧。</p>
+</blockquote>
+<p>很庆幸自己从系统的学习前端开始，一直都没有放弃，坎坎坷坷一路走来，也算是积累了一些经验。<br>在这里同大家分享。<br><a id="more"></a></p>
+<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>前段时间在制作一个专题页面的时候，有这样的一个效果需要实现。<br><img src="/assets/blogImg/more.png" alt="more"><br>由于专题页仅仅针对PC端，所以完全可以用图片的形式来实现，省时省力。但是一想，如果要在移动端实现这个效果呐，难道也用图片？这不仅仅增加了一次页面请求，还减慢了加载的速度，是不符合移动端开发准则的。</p>
+<h3 id="理清思路"><a href="#理清思路" class="headerlink" title="理清思路"></a>理清思路</h3><p>如果这个专题页是基于移动端开发的，我首先想到的是用CSS来实现。好处就不多说了，加载速度杠杠的，也不用太担心兼容性问题。<br>于是我便google了关键词“CSS实现平行四边形”。<br>点击进了第一条搜索结果，<a href="http://jerryzou.com/posts/use-css-to-paint-triangle-and-parallelogram/" target="_blank" rel="external">用CSS实现三角形与平行四边形</a>。<br>从标题看到，除了用CSS实现平行四边形，还可以实现三角形。对于一直寻求甚解的我来说肯定不会放弃这一个小细节。<br>看了看实现三角形的CSS代码，我当时就蒙B了<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">border-width</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">border-style</span>: solid;</div><div class="line">  <span class="attribute">border-color</span>: red transparent transparent transparent;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>这尼玛什么鬼，用border实现三角形，想不通啊？border还可以分开写，<code>boder: 1px solid #ccc</code>这不才是最常规的写法吗？<br>看到这儿，我知道是我自己的基础不够扎实的缘故，如果真的想要掌握这个知识点，越往后面看肯定还有很多不清楚需要查阅资料的。<br>于是乎，这儿就要借用思维导图工具了。在线的推荐用<a href="http://naotu.baidu.com/" target="_blank" rel="external">百度脑图</a>，也可以去下载个XMind，都挺好用的。<br>之后怎么做呐，把你不懂的知识点、google的过程，一步步通过树状图罗列出来，这样你就可以随时知道你学到哪儿了，哪些知识点是你没有掌握的，对你后期的回顾和整个学习流程的把握很有帮助，形散而神不散，不会让前端庞大的知识体系给压垮了。</p>
+<h3 id="说说border"><a href="#说说border" class="headerlink" title="说说border"></a>说说border</h3><p>以前写代码的时候，一直都觉得border是个很普通、简单的属性，今日一切磋才知道是我“井底之蛙”了。<br>这里有一点要<strong>提一下</strong>，很多人都在<a href="http://www.w3school.com.cn/" target="_blank" rel="external">w3school</a>查阅相关的资料，不能说不好吧，但是强烈推荐使用<a href="http://www.w3schools.com/" target="_blank" rel="external">w3schools</a>代替w3school来使用，虽然全英文，但是耐下性子来看，只要英语不是差到无可救药的地步，还是可以看懂的。当有问题的时候，多上上<a href="http://stackoverflow.com/" target="_blank" rel="external">stackoverflow</a>，很快就能找到你想要的答案。这就是一个良好习惯的养成过程。</p>
+<p>言归正传，还是来说说border吧。<br>在emment插件中，有一个<code>bd+</code>的快捷键，可以直接<code>border: 1px solid #000;</code>也正是因为这样的惯性思维，让我没有多去思考这个属性。</p>
+<p>其实我们平常用的都是border的简写形式，放张图看看border包含的其他属性。<br><img src="/assets/blogImg/border.png" alt="boder"><br>其实这也只是一部分，需要深入了解的还是要自己去查阅相关资料。<br>再次推荐<a href="http://www.w3schools.com/" target="_blank" rel="external">w3schools</a><br>纳尼，boder-color还可以这样写？其实你理解了这一点，也就基本上理解了实现三角形的原理。</p>
+<p>再来看看我们google到的第一个<a href="http://jerryzou.com/posts/use-css-to-paint-triangle-and-parallelogram/" target="_blank" rel="external">网站</a><br><img src="/assets/blogImg/triangle.png" alt="triangle"><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#first</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">border-width</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">border-style</span>: solid;</div><div class="line">  <span class="attribute">border-color</span>: red green blue brown;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#second</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">border-width</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">border-style</span>: solid;</div><div class="line">  <span class="attribute">border-color</span>: red green blue brown;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#third</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">border-width</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">border-style</span>: solid;</div><div class="line">  <span class="attribute">border-color</span>: red transparent transparent transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其实仔细看看这了例子也差不多能明白，只能说还是太<strong>浮躁</strong>了，没用沉下心来。</p>
+<h3 id="其他实现三角形的方法"><a href="#其他实现三角形的方法" class="headerlink" title="其他实现三角形的方法"></a>其他实现三角形的方法</h3><p><strong>1.</strong> 字符法<br>这个方法是在张老师的<a href="http://www.zhangxinxu.com/wordpress/2009/11/%E5%91%8A%E5%88%AB%E5%9B%BE%E7%89%87%E2%80%94%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E5%AE%9E%E7%8E%B0%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E5%9C%86%E8%A7%92%E5%B0%96%E8%A7%92%E6%95%88%E6%9E%9Cbeta/" target="_blank" rel="external">博客</a>中看到的，惊叹张老师09年的时候就想到了现如今所谓的font-icon。<br>强烈推荐张老师的<a href="http://www.zhangxinxu.com/wordpress/2015/05/how-to-ask-web-front-question/" target="_blank" rel="external">博客</a>，看了之后，你说不定会惊叹，TMD竟然还可以这样玩！<br><br><strong>2.</strong> 边框法<br>也就是前文介绍的方法。<br>依旧推荐张老师<a href="http://www.zhangxinxu.com/wordpress/2010/03/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E5%90%84%E7%B1%BB%E6%B0%94%E7%90%83%E6%B3%A1%E6%B3%A1%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%95%88%E6%9E%9C/" target="_blank" rel="external">博客</a>中对边框法的介绍。</p>
+<p><strong>3.</strong> 其他<br>这就是我说的那篇介绍的挺全面的<a href="http://www.daqianduan.com/4721.html" target="_blank" rel="external">文章</a>，反正总结的肯定会比我好。</p>
+<h3 id="可以回归正题了"><a href="#可以回归正题了" class="headerlink" title="可以回归正题了"></a>可以回归正题了</h3><p>说了这么多，不知道大家有没有把我想要搜索的正题给忘了，没错，就是“实现平行四边形”。<br>前面说了一大堆，好像TM完全不沾边啊。<br>NO, NO, NO!<br>其实这正是我写这篇文章的主要目的：<strong>分享解决问题的方法</strong>。<br>前端技术的发展日新月异，NodeJS社区每天都有一个新的API出来，要完全掌握是不可能的，但是我们可以学习解决问题的方法。从“用CSS实现平行四边形”这个问题出发，使我深入了解了<code>border</code>属性，更掌握了一系列实现“三角形”的方法。在学习之后，我能归纳总结我所学到的知识和存在的不足，这才是对我帮助最大的。</p>
+<p>至于如何“用CSS实现平行四边形”，大家应该可以自行google了吧。<br>如果你告诉我你翻不了墙，那我只能“祝你幸福”！</p>
+<p>End</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/02/24/如何获取CSS的属性值/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/03/24/再见，考拉。/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/03/05/关于前端自学的学习思路/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

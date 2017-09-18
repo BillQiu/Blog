@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>background八日谈第一日：background-image | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="background,background-image,CSS,linear-gradient," />
+  
+
+  <meta name="description" content="开宗明义background，一个最常用的CSS属性，只要是写过CSS的人，都肯定用过这个属性。正如他的字面意思：背景，我们平常更多地用他来设置背景颜色。殊不知background是一个强大的家族，共有八个兄弟姐妹，background八日谈系类文章将分八个章节对他们进行一一介绍，相信你定会对他们有一个新的认识。12345678910body &amp;#123;  background:     url">
+<meta name="keywords" content="background,background-image,CSS,linear-gradient">
+<meta property="og:type" content="article">
+<meta property="og:title" content="background八日谈第一日：background-image">
+<meta property="og:url" content="http://billqiu.github.io/2016/04/14/background八日谈第一日：background-image/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="开宗明义background，一个最常用的CSS属性，只要是写过CSS的人，都肯定用过这个属性。正如他的字面意思：背景，我们平常更多地用他来设置背景颜色。殊不知background是一个强大的家族，共有八个兄弟姐妹，background八日谈系类文章将分八个章节对他们进行一一介绍，相信你定会对他们有一个新的认识。12345678910body &amp;#123;  background:     url">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://billqiu.github.io/assets/blogImg/linear-gradient.png">
+<meta property="og:updated_time" content="2016-05-05T05:21:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="background八日谈第一日：background-image">
+<meta name="twitter:description" content="开宗明义background，一个最常用的CSS属性，只要是写过CSS的人，都肯定用过这个属性。正如他的字面意思：背景，我们平常更多地用他来设置背景颜色。殊不知background是一个强大的家族，共有八个兄弟姐妹，background八日谈系类文章将分八个章节对他们进行一一介绍，相信你定会对他们有一个新的认识。12345678910body &amp;#123;  background:     url">
+<meta name="twitter:image" content="http://billqiu.github.io/assets/blogImg/linear-gradient.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开宗明义"><span class="toc-text">开宗明义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片类型"><span class="toc-text">图片类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常规图片-regular-images"><span class="toc-text">常规图片(regular images)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#渐变图片-gradients"><span class="toc-text">渐变图片(gradients)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兼容性"><span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拓展"><span class="toc-text">拓展</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-background八日谈第一日：background-image" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">background八日谈第一日：background-image</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2016/04/14/background八日谈第一日：background-image/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="开宗明义"><a href="#开宗明义" class="headerlink" title="开宗明义"></a>开宗明义</h2><p><code>background</code>，一个最常用的CSS属性，只要是写过CSS的人，都肯定用过这个属性。<br>正如他的字面意思：背景，我们平常更多地用他来设置背景颜色。殊不知background是一个强大的家族，共有八个兄弟姐妹，background八日谈系类文章将分八个章节对他们进行一一介绍，相信你定会对他们有一个新的认识。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">background</span>:</div><div class="line">     <span class="built_in">url</span>(sweettexture.jpg)    <span class="comment">/* image */</span></div><div class="line">     top center / <span class="number">200px</span> <span class="number">200px</span> <span class="comment">/* position / size */</span></div><div class="line">     no-repeat                <span class="comment">/* repeat */</span></div><div class="line">     fixed                    <span class="comment">/* attachment */</span></div><div class="line">     padding-box              <span class="comment">/* origin */</span></div><div class="line">     content-box              <span class="comment">/* clip */</span></div><div class="line">     red;                     <span class="comment">/* color */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="图片类型"><a href="#图片类型" class="headerlink" title="图片类型"></a>图片类型</h2><p>在CSS中，图片大致大致可以分为两大类：常规图片(regular images)和渐变图片(gradients)，本文也根据图片类型分为两部分来介绍<code>background-image</code>。</p>
+<h3 id="常规图片-regular-images"><a href="#常规图片-regular-images" class="headerlink" title="常规图片(regular images)"></a>常规图片(regular images)</h3><p>从我们最常用的常规图片说起，<code>background: url(sweettexture.jpg);</code>这个属性大家都不会陌生，对相应的元素设置一个名为sweettexture的jpg格式的是图片。<br>当然这只是最基础的，如果我们想让图片置于一个合理的位置，常常会与<code>background-repeat</code>、<code>background-position</code>等属性配合使用。<br>在设置常规图片时，一定要考虑到浏览器是否能识别图片的格式，几乎所有的浏览器都支持JPEG、GIF、PNG格式的图片，如果要用到其他格式的图片就要慎重考虑了。至于以上三种图片的应用场景，以超出本文的讨论范围，请大家自行<a href="https://www.google.com" target="_blank" rel="external">google</a>(不要百度！不要百度！不要百度！)</p>
+<p>除了以上几种常用的引入图片的类型，还有一种base64的图片格式，大家可能用的比较少。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">background</span>-<span class="built_in">image</span>:url(data:<span class="built_in">image</span>/gif;<span class="built_in">base64</span>,R0lGODlhBAABAIABAMLBwfLx8SH5BAEAAAEALAAAAAAEAAEAAAICRF4AOw==);</div></pre></td></tr></table></figure></p>
+<p><code>data:[&lt;mime type&gt;][;charset=&lt;charset&gt;][;base64],&lt;encoded data&gt;</code><br>优点：</p>
+<ul>
+<li>减少了HTTP请求</li>
+<li>某些文件可以避免跨域的问题</li>
+<li>没有图片更新要重新上传，还要清理缓存的问题<br>缺点：</li>
+<li>增加了CSS文件的尺寸</li>
+<li>浏览器支持<br>想要了解base64图片的，可以看看张老师写的这篇<a href="http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_blank" rel="external">文章</a>。</li>
+</ul>
+<p>对同一个元素，我们可以通过<code>background-image</code>设置多个背景图片。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(logo.png), <span class="built_in">url</span>(background-pattern.png);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里有一点需要注意——图片的设置顺序，越先声明的层次优先级越高。<br>举个栗子，如果声明的第二个背景图片的尺寸比第一个小，并且没有进行定位，就会被第一个申明的背景图片覆盖。</p>
+<iframe width="100%" height="200" src="//jsfiddle.net/bill_q/34pyvr7k/1/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>在使用背景图片的时候，我们有时会遇到图片无法加载的情况，为此可以为背景图片设置一个<b>回调颜色</b>，在图片无法加载的情况下代替图片显示。</p>
+<iframe width="100%" height="150" src="//jsfiddle.net/bill_q/70x9cbLo/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3 id="渐变图片-gradients"><a href="#渐变图片-gradients" class="headerlink" title="渐变图片(gradients)"></a>渐变图片(gradients)</h3><p></p><p style="font-size: 17px">线性渐变</p><br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">background</span>: <span class="built_in">linear</span>-gradient(angle, <span class="built_in">color</span>-stop1, <span class="built_in">color</span>-stop2);</div></pre></td></tr></table></figure><p></p>
+<p>依旧从我们最熟悉的线性渐变开始说起，如果没有设置angle值，默认从上到下。</p>
+<iframe width="100%" height="200" src="//jsfiddle.net/bill_q/sy1Laak7/1/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>使用to表示颜色的延生方向，一共有八个方向<br>to <code>top/bottom/right/left/top left/top right/buttom left/buttom right</code></p>
+<iframe width="100%" height="200" src="//jsfiddle.net/bill_q/xw4251ov/2/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>如果想要更加精确的颜色延生角度，可以使用<code>deg</code><br>标记12点方向为0度，顺时针方向增加，90deg = to right,-90deg = to left</p>
+<iframe width="100%" height="200" src="//jsfiddle.net/bill_q/cf7zcu55/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>当想要控制色块中某种颜色开始或结束的位置，可以使用<code>%</code>进行控制</p>
+<iframe width="100%" height="200" src="//jsfiddle.net/bill_q/73m47n7L/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p></p><p style="font-size: 17px">径向渐变</p><br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">background</span>: radial-gradient(shape size <span class="built_in">at</span> <span class="built_in">position</span>, start-<span class="built_in">color</span>, ..., <span class="built_in">last</span>-<span class="built_in">color</span>);</div></pre></td></tr></table></figure><p></p>
+<p>径向渐变与线性渐变大体相同，主要区别在于angle与shape size at position上。<br>默认从内向外扩散。</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/bill_q/cgssdgbc/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p><img src="/assets/blogImg/linear-gradient.png" alt="兼容性"></p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>关于多背景图，我们可以对其设置多样CSS3动画，并且完全不需要JS的介入。</p>
+<iframe width="100%" height="300" src="//jsfiddle.net/bill_q/eb08a191/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>巧妙运用渐变，会得到一系列意想不到的<a href="http://lea.verou.me/css3patterns/" target="_blank" rel="external">图案</a>。</p>
+<p>TO BE CONTINUED!</p>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://css-tricks.com/" target="_blank" rel="external">https://css-tricks.com/</a></li>
+<li><a href="http://www.w3schools.com/" target="_blank" rel="external">http://www.w3schools.com/</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</a></li>
+</ol>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/04/12/table布局引发的“血案”/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/05/background八日谈第二日：background-color/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2016/04/14/background八日谈第一日：background-image/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
