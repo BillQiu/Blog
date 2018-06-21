@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>在 react 组件中使用 debounce 函数 | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="react,debounce," />
+  
+
+  <meta name="description" content="什么是 debouncedebounce，中文翻译为防抖。与之相对应的还有一个概念 throttle —— 节流。两者用来控制某个函数在一定时间内执行多少次的技巧，相似却又不同。 关于两者的对比以及使用场景，可以阅读这篇文章来加深了解。本文主要讲述的，是如果在 react components 中，使用 debounce 函数来防止回调事件的多次触发，从而提升代码效率。 应用在一个 input 输">
+<meta name="keywords" content="react,debounce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 react 组件中使用 debounce 函数">
+<meta property="og:url" content="http://billqiu.github.io/2017/10/15/how-to-debounce-in-react/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="什么是 debouncedebounce，中文翻译为防抖。与之相对应的还有一个概念 throttle —— 节流。两者用来控制某个函数在一定时间内执行多少次的技巧，相似却又不同。 关于两者的对比以及使用场景，可以阅读这篇文章来加深了解。本文主要讲述的，是如果在 react components 中，使用 debounce 函数来防止回调事件的多次触发，从而提升代码效率。 应用在一个 input 输">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-15T12:47:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 react 组件中使用 debounce 函数">
+<meta name="twitter:description" content="什么是 debouncedebounce，中文翻译为防抖。与之相对应的还有一个概念 throttle —— 节流。两者用来控制某个函数在一定时间内执行多少次的技巧，相似却又不同。 关于两者的对比以及使用场景，可以阅读这篇文章来加深了解。本文主要讲述的，是如果在 react components 中，使用 debounce 函数来防止回调事件的多次触发，从而提升代码效率。 应用在一个 input 输">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是-debounce"><span class="toc-text">什么是 debounce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#合成事件（SyntheticEvent）"><span class="toc-text">合成事件（SyntheticEvent）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件池（Event-Pooling）"><span class="toc-text">事件池（Event Pooling）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-how-to-debounce-in-react" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">在 react 组件中使用 debounce 函数</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.10.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2017/10/15/how-to-debounce-in-react/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="什么是-debounce"><a href="#什么是-debounce" class="headerlink" title="什么是 debounce"></a>什么是 debounce</h2><p><strong>debounce</strong>，中文翻译为防抖。与之相对应的还有一个概念 <strong>throttle</strong> —— 节流。两者用来控制某个函数在一定时间内执行多少次的技巧，相似却又不同。</p>
+<p>关于两者的对比以及使用场景，可以阅读这篇<a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank" rel="noopener">文章</a>来加深了解。本文主要讲述的，是如果在 <code>react components</code> 中，使用 <code>debounce</code> 函数来防止回调事件的多次触发，从而提升代码效率。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>在一个 <code>input</code> 输入框中，给其绑定了一个 <code>onChange</code> 事件，每次输入后，都会触发一个回调函数。因为我们想要的只是用户输入的最后结果，所以除了用户输入完成后触发的回调函数，其他都是冗余的。因此，需要对绑定的回调函数做 <code>debounce</code> 处理。</p>
+<p>关于  <code>debounce</code> 函数，有很多实现版本，这里选用了 <code>loadsh.debounce</code>。虽然函数实现原理很简单，但是用于生产环境的代码，还是建议使用成熟的第三方库。</p>
+<p>我们的第一反应，一般都是直接将回调函数用 <code>debounce</code> 包裹起来达到想要的效果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> react, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; debounce &#125; <span class="keyword">from</span> <span class="string">'lodash.debounce'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Debounce</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  printChange(e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'value :: '</span>, e.target.value);</span><br><span class="line">    <span class="comment">// call ajax</span></span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input onChange=&#123;debounce(<span class="keyword">this</span>.printChange, <span class="number">500</span>)&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>但是这么做之后，浏览器就会报异常： <code>Uncaught TypeError: Cannot read property &#39;value&#39; of null</code>。为什么会这样？这里就涉及到了 <code>react</code> 事件系统 中的一个概念：合成事件。</p>
+<h3 id="合成事件（SyntheticEvent）"><a href="#合成事件（SyntheticEvent）" class="headerlink" title="合成事件（SyntheticEvent）"></a>合成事件（SyntheticEvent）</h3><p>事件处理程序通过 合成事件（SyntheticEvent）的实例传递，<code>SyntheticEvent</code> 是浏览器原生事件跨浏览器的封装。<code>SyntheticEvent</code> 和浏览器原生事件一样有 <code>stopPropagation()</code>、<code>preventDefault()</code> 接口，而且这些接口夸浏览器兼容。</p>
+<h3 id="事件池（Event-Pooling）"><a href="#事件池（Event-Pooling）" class="headerlink" title="事件池（Event Pooling）"></a>事件池（Event Pooling）</h3><p><code>SyntheticEvent</code> 是池化的. 这意味着 <code>SyntheticEvent</code> 对象将会被重用，并且所有的属性都会在事件回调被调用后被    nullified。 这是因为性能的原因。 因此,你不能异步的访问事件。</p>
+<p>通过了解事件系统，也就不难理解为什么会报错了。因为经过 <code>debounce</code> 包装后的回调函数，变成了一个异步事件，在池化后被 nullified 了。</p>
+<p>那么怎样才能解决这个问题？</p>
+<p>通过在回调事件顶部加上 <code>e.persist()</code> 就可以从池中移除合成事件，并允许对事件的引用保留。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> react, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; debounce &#125; <span class="keyword">from</span> <span class="string">'lodash.debounce'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Debounce</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  printChange(e) &#123;</span><br><span class="line">    e.persist();</span><br><span class="line">    debounce(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'value :: '</span>, e.target.value);</span><br><span class="line">      <span class="comment">// call ajax</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input onChange=&#123;<span class="keyword">this</span>.printChange&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这样做之后报错问题虽然解决了，但是会发现 <code>debounce</code> 的函数并没有被执行。因此，还需要对回调函数进行优化。</p>
+<p>把需要异步执行的回调函数抽离出来封装，并且在组件初始化话的时候就将其 <code>debounce</code> 化，就可以得到我们想要的效果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> react, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; debounce &#125; <span class="keyword">from</span> <span class="string">'lodash.debounce'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Debounce</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  construtor() &#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.callAjax = debounce(<span class="keyword">this</span>.callAjax, <span class="number">300</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  callAjax = <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'value :: '</span>, value);</span><br><span class="line">    <span class="comment">// call ajax</span></span><br><span class="line">  &#125;</span><br><span class="line">  printChange(e) &#123;</span><br><span class="line">    e.persist();</span><br><span class="line">    <span class="keyword">this</span>.callAjax(e.target.value);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input onChange=&#123;<span class="keyword">this</span>.printChange&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<li><a href="https://github.com/hanzichi/underscore-analysis/issues/20" target="_blank" rel="noopener">JavaScript 函数节流和函数去抖应用场景辨析 · Issue #20 · hanzichi/underscore-analysis · GitHub</a></li>
+<li><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank" rel="noopener">Debouncing and Throttling Explained Through Examples</a></li>
+<li><a href="https://reactjs.org/docs/events.html" target="_blank" rel="noopener">SyntheticEvent</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/11/20/建立自己的时间管理系统/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/11/05/shallow-clone-vs-deep-clone-in-js/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2017/10/15/how-to-debounce-in-react/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

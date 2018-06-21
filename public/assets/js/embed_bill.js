@@ -495,7 +495,7 @@ function sskadmin(e) {
     B = w.Callbacks = {},
     j = w.openDialog = function(e) {
         return w.dialog !== n && w.dialog.el.remove(),
-        w.dialog = (new H.Dialog('<div class="ds-dialog"><div class="ds-dialog-inner ds-rounded"><div class="ds-dialog-body">' + e + '</div><div class="ds-dialog-footer"><a href="http://duoshuo.com/" target="_blank" class="ds-logo"></a><span>\u793e\u4f1a\u5316\u8bc4\u8bba\u6846</span></div><a class="ds-dialog-close" href="javascript:void(0)" title="\u5173\u95ed" target="_blank" rel="external"></a></div></div>')).open()
+        w.dialog = (new H.Dialog('<div class="ds-dialog"><div class="ds-dialog-inner ds-rounded"><div class="ds-dialog-body">' + e + '</div><div class="ds-dialog-footer"><a href="http://duoshuo.com/" target="_blank" class="ds-logo"></a><span>\u793e\u4f1a\u5316\u8bc4\u8bba\u6846</span></div><a class="ds-dialog-close" href="javascript:void(0)" title="\u5173\u95ed" target="_blank" rel="noopener"></a></div></div>')).open()
     },
     F = w.injectScript = function(r, i) {
         var s = t.createElement("script"),
@@ -563,7 +563,7 @@ function sskadmin(e) {
             return e ? t ? '<a href="' + t + '" target="_blank" rel="nofollow" class="ds-time" datetime="' + e + '" title="' + w.fullTime(e) + '">' + w.elapsedTime(e) + "</a>": '<span class="ds-time" datetime="' + e + '" title="' + w.fullTime(e) + '">' + w.elapsedTime(e) + "</span>": ""
         },
         serviceIcon: function(e, t) {
-            return '<a href="javascript:void(0)" class="ds-service-icon' + (t ? " -grey":="" "")="" +="" "="" ds-"="" e="" '"="" data-service="' + e + '" title="' + w.sourceName[e] + '" target="_blank" rel="external"></a>'
+            return '<a href="javascript:void(0)" class="ds-service-icon' + (t ? " -grey":="" "")="" +="" "="" ds-"="" e="" '"="" data-service="' + e + '" title="' + w.sourceName[e] + '" target="_blank" rel="noopener"></a>'
         },
         loginButtons: function(e) {
             return '<div class="ds-login-buttons"><p>\u793e\u4ea4\u5e10\u53f7\u767b\u5f55:</p><div class="ds-social-links">' + J.serviceList() + J.additionalServices() + "</div></div>"
@@ -578,7 +578,7 @@ function sskadmin(e) {
             n = ["weibo", "qq", "renren", "douban"],
             r = 0;
             for (; r < n.length; r++) t += J.loginItem(n[r], e);
-            return t + '<li><a class="ds-more-services" href="javascript:void(0)" target="_blank" rel="external">\u66f4\u591a\u00bb</a></li>' + "</ul>"
+            return t + '<li><a class="ds-more-services" href="javascript:void(0)" target="_blank" rel="noopener">\u66f4\u591a\u00bb</a></li>' + "</ul>"
         },
         additionalServices: function(e) {
             var t = '<ul class="ds-service-list ds-additional-services">',
@@ -609,11 +609,11 @@ function sskadmin(e) {
             }: null)
         },
         likePost: function(e) {
-            return '<a class="ds-post-likes" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-like"></span>' + k.like + (e.likes > 0 ? "(" + e.likes + ")": "") + "</a>"
+            return '<a class="ds-post-likes" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-like"></span>' + k.like + (e.likes > 0 ? "(" + e.likes + ")": "") + "</a>"
         },
         ctxPost: function(e, t, n) {
             var r = K(e);
-            return '<li class="ds-ctx-entry" '="" +="" (n="" ?="" style="display:none" ':="" "")="" data-post-id="' + e.post_id + '"><div class="ds-avatar">' + J.avatar(r) + '</div><div class="ds-ctx-body"><div class="ds-ctx-head">' + J.userAnchor(r) + J.timeHtml(e.created_at, e.url) + (t >= 0 ? '<div class="ds-ctx-nth" title="' + w.fullTime(e.created_at) + '">' + (t + 1) + k.floor + "</div>": "") + '</div><div class="ds-ctx-content">' + e.message + (t >= 0 ? '\u3000\u3000\u3000\u3000\u3000\u3000\u3000<div class="ds-comment-actions' + (e.vote > 0 ? " ds-post-liked":="" "")="" +="" '"="">' + J.likePost(e) + ' <a class="ds-post-repost" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-share"></span>' + k.repost + "</a>" + ' <a class="ds-post-reply" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-reply"></span>' + k.reply + "</a>" + "</div>": "") + "</div></div></li>"
+            return '<li class="ds-ctx-entry" '="" +="" (n="" ?="" style="display:none" ':="" "")="" data-post-id="' + e.post_id + '"><div class="ds-avatar">' + J.avatar(r) + '</div><div class="ds-ctx-body"><div class="ds-ctx-head">' + J.userAnchor(r) + J.timeHtml(e.created_at, e.url) + (t >= 0 ? '<div class="ds-ctx-nth" title="' + w.fullTime(e.created_at) + '">' + (t + 1) + k.floor + "</div>": "") + '</div><div class="ds-ctx-content">' + e.message + (t >= 0 ? '\u3000\u3000\u3000\u3000\u3000\u3000\u3000<div class="ds-comment-actions' + (e.vote > 0 ? " ds-post-liked":="" "")="" +="" '"="">' + J.likePost(e) + ' <a class="ds-post-repost" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-share"></span>' + k.repost + "</a>" + ' <a class="ds-post-reply" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-reply"></span>' + k.reply + "</a>" + "</div>": "") + "</div></div></li>"
         }
     },
     K = function(e) {
@@ -841,7 +841,7 @@ function sskadmin(e) {
                         o = e.el.innerHeight() - (t.top - i.top) + 6,
                         u = t.left - i.left - 35 + (s > 35 ? 35 : s);
                         try {
-                            if (r.hasClass("ds-comment-context")) G.attr("id", "ds-ctx-bubble").attr("data-post-id", r.attr("data-post-id")).html('<ul id="ds-ctx">' + J.ctxPost(ot[r.attr("data-parent-id")].data) + "</ul>" + '<div class="ds-bubble-footer"><a class="ds-ctx-open" href="javascript:void(0);" target="_blank" rel="external">\u67e5\u770b\u5bf9\u8bdd</a></div>');
+                            if (r.hasClass("ds-comment-context")) G.attr("id", "ds-ctx-bubble").attr("data-post-id", r.attr("data-post-id")).html('<ul id="ds-ctx">' + J.ctxPost(ot[r.attr("data-parent-id")].data) + "</ul>" + '<div class="ds-bubble-footer"><a class="ds-ctx-open" href="javascript:void(0);" target="_blank" rel="noopener">\u67e5\u770b\u5bf9\u8bdd</a></div>');
                             else if (r.hasClass("ds-avatar") || r.hasClass("ds-user-name")) {
                                 var a = {},
                                 f = a.user_id = r.attr("data-user-id");
@@ -1030,7 +1030,7 @@ function sskadmin(e) {
                     title: "\u65b0\u7559\u8a00\u53ca\u56de\u590d",
                     apiUrl: "/api/users/unreadComments",
                     tmpl: function(e) {
-                        return '<li data-thread-id="' + e.thread.thread_id + '">' + i.map(e.authors, J.userAnchor).join("\u3001") + ' \u5728 <a class="ds-read" href="' + e.thread.url + '#comments" target="_blank">' + p(e.thread.title || "\u65e0\u6807\u9898") + '</a> \u4e2d\u56de\u590d\u4e86\u4f60 <a class="ds-delete ds-read" title="\u77e5\u9053\u4e86" href="javascript:void(0)" target="_blank" rel="external">\u77e5\u9053\u4e86</a></li>'
+                        return '<li data-thread-id="' + e.thread.thread_id + '">' + i.map(e.authors, J.userAnchor).join("\u3001") + ' \u5728 <a class="ds-read" href="' + e.thread.url + '#comments" target="_blank">' + p(e.thread.title || "\u65e0\u6807\u9898") + '</a> \u4e2d\u56de\u590d\u4e86\u4f60 <a class="ds-delete ds-read" title="\u77e5\u9053\u4e86" href="javascript:void(0)" target="_blank" rel="noopener">\u77e5\u9053\u4e86</a></li>'
                     },
                     read: function(e) {
                         var t = e.attr("data-thread-id");
@@ -1044,7 +1044,7 @@ function sskadmin(e) {
                     title: "\u7cfb\u7edf\u6d88\u606f",
                     apiUrl: "/api/users/unreadNotifications",
                     tmpl: function(e) {
-                        return '<li data-notification-id="' + e.notification_id + '" data-notification-type="' + e.type + '">' + e.content + ' <a class="ds-delete ds-read" title="\u77e5\u9053\u4e86" href="javascript:void(0)" target="_blank" rel="external">\u77e5\u9053\u4e86</a></li>'
+                        return '<li data-notification-id="' + e.notification_id + '" data-notification-type="' + e.type + '">' + e.content + ' <a class="ds-delete ds-read" title="\u77e5\u9053\u4e86" href="javascript:void(0)" target="_blank" rel="noopener">\u77e5\u9053\u4e86</a></li>'
                     },
                     read: function(e) {
                         var t = e.attr("data-notification-id");
@@ -1093,7 +1093,7 @@ function sskadmin(e) {
                 return U(i(this).data("type")),
                 !1
             }).appendTo(t.body)),
-            e.html('<div id="ds-reset"><a class="ds-logo" href="http://duoshuo.com/" target="_blank" title="\u591a\u8bf4"></a><ul class="ds-notify-unread"><li' +="" (n.comments="" ?="" "":="" '="" style="display:none;" ')=""><a data-type="unread-comments" href="javascript:void(0);" target="_blank" rel="external">\u4f60\u6709' + n.comments + "\u6761\u65b0\u56de\u590d</a><li" +="" (n.notifications="" ?="" "":="" '="" style="display:none;" ')=""><a data-type="unread-notifications" href="javascript:void(0);" target="_blank" rel="external">\u4f60\u6709' + n.notifications + "\u6761\u7cfb\u7edf\u6d88\u606f</a></li"></li'></ul></div>")[(n.comments || n.notifications) && nt.data.notify_position !== "hidden" && !i(".ds-dialog")[0] ? "show": "hide"]()
+            e.html('<div id="ds-reset"><a class="ds-logo" href="http://duoshuo.com/" target="_blank" title="\u591a\u8bf4"></a><ul class="ds-notify-unread"><li' +="" (n.comments="" ?="" "":="" '="" style="display:none;" ')=""><a data-type="unread-comments" href="javascript:void(0);" target="_blank" rel="noopener">\u4f60\u6709' + n.comments + "\u6761\u65b0\u56de\u590d</a><li" +="" (n.notifications="" ?="" "":="" '="" style="display:none;" ')=""><a data-type="unread-notifications" href="javascript:void(0);" target="_blank" rel="noopener">\u4f60\u6709' + n.notifications + "\u6761\u7cfb\u7edf\u6d88\u606f</a></li"></li'></ul></div>")[(n.comments || n.notifications) && nt.data.notify_position !== "hidden" && !i(".ds-dialog")[0] ? "show": "hide"]()
         },
         it.on("reset", w.resetNotify),
         J.replybox = function(e, t) {
@@ -1311,7 +1311,7 @@ function sskadmin(e) {
                 var r = this,
                 s = r.embedThread,
                 o = s.data,
-                u = r.el = i('<div class="ds-meta"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded' + (o.user_vote > 0 ? " ds-thread-liked":="" "")="" +="" '"="" target="_blank" rel="external"><span class="ds-icon ds-icon-heart"></span>' + ' <span class="ds-thread-like-text">' + (o.user_vote > 0 ? "\u5df2\u559c\u6b22": "\u559c\u6b22") + '</span><span class="ds-thread-cancel-like">\u53d6\u6d88\u559c\u6b22</span></a><span class="ds-like-panel"></span></div>'),
+                u = r.el = i('<div class="ds-meta"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded' + (o.user_vote > 0 ? " ds-thread-liked":="" "")="" +="" '"="" target="_blank" rel="noopener"><span class="ds-icon ds-icon-heart"></span>' + ' <span class="ds-thread-like-text">' + (o.user_vote > 0 ? "\u5df2\u559c\u6b22": "\u559c\u6b22") + '</span><span class="ds-thread-cancel-like">\u53d6\u6d88\u559c\u6b22</span></a><span class="ds-like-panel"></span></div>'),
                 a = u.find(".ds-like-thread-button").click(function(f) {
                     var l = a.hasClass("ds-thread-liked");
                     A("/api/threads/vote", {
@@ -1358,7 +1358,7 @@ function sskadmin(e) {
         J.postListHead = function(e) {
             var t = e.data,
             n = e.options;
-            return '<div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">' + k.latest + '</a><a class="ds-order-asc">' + k.earliest + '</a><a class="ds-order-hot">' + k.hottest + '</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);" target="_blank" rel="external"></a></li>' + (n.show_reposts && t.reposts ? '<li class="ds-tab"><a class="ds-comments-tab-repost" href="javascript:void(0);" target="_blank" rel="external"></a></li>': "") + (n.show_weibo && t.weibo_reposts ? '<li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);" target="_blank" rel="external"></a></li>': "") + (n.show_qqt && t.qqt_reposts ? '<li class="ds-tab"><a class="ds-comments-tab-qqt" href="javascript:void(0);" target="_blank" rel="external"></a></li>': "") + "</ul>" + "</div>"
+            return '<div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">' + k.latest + '</a><a class="ds-order-asc">' + k.earliest + '</a><a class="ds-order-hot">' + k.hottest + '</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);" target="_blank" rel="noopener"></a></li>' + (n.show_reposts && t.reposts ? '<li class="ds-tab"><a class="ds-comments-tab-repost" href="javascript:void(0);" target="_blank" rel="noopener"></a></li>': "") + (n.show_weibo && t.weibo_reposts ? '<li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);" target="_blank" rel="noopener"></a></li>': "") + (n.show_qqt && t.qqt_reposts ? '<li class="ds-tab"><a class="ds-comments-tab-qqt" href="javascript:void(0);" target="_blank" rel="noopener"></a></li>': "") + "</ul>" + "</div>"
         },
         H.PostListHead = function(e) {
             this.embedThread = e
@@ -1427,7 +1427,7 @@ function sskadmin(e) {
         H.Paginator.prototype = {
             reset: function(e) {
                 function i(e) {
-                    r.push('<a data-page="' + e + '" href="javascript:void(0);" target="_blank" rel="external">' + e + "</a>")
+                    r.push('<a data-page="' + e + '" href="javascript:void(0);" target="_blank" rel="noopener">' + e + "</a>")
                 }
                 var t = this.collection.params.page || 1,
                 n, r = [];
@@ -1437,7 +1437,7 @@ function sskadmin(e) {
                     n > 2 && r.push('<span class="page-break">...</span>');
                     for (; n < t; n++) i(n)
                 }
-                r.push('<a data-page="' + t + '" href="javascript:void(0);" class="ds-current" target="_blank" rel="external">' + t + "</a>");
+                r.push('<a data-page="' + t + '" href="javascript:void(0);" class="ds-current" target="_blank" rel="noopener">' + t + "</a>");
                 if (t < e.pages) {
                     for (n = t + 1; n <= 4="" t="" +="" &&="" n="" <="" e.pages;="" n++)="" i(n);="" e.pages="" r.push('<span="" class="page-break">...'),
                     i(e.pages)
@@ -1516,17 +1516,17 @@ function sskadmin(e) {
             u = e.parents || [];
             switch (e.source) {
             case "duoshuo":
-                o += '<a class="ds-post-reply" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-reply"></span>' + k.reply + "</a>" + J.likePost(e) + '<a class="ds-post-repost" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-share"></span>' + k.repost + "</a>" + '<a class="ds-post-report" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-report"></span>' + k.report + "</a>" + (e.privileges["delete"] ? '<a class="ds-post-delete" href="javascript:void(0);" target="_blank" rel="external"><span class="ds-icon ds-icon-delete"></span>' + k["delete"] + "</a>": "");
+                o += '<a class="ds-post-reply" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-reply"></span>' + k.reply + "</a>" + J.likePost(e) + '<a class="ds-post-repost" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-share"></span>' + k.repost + "</a>" + '<a class="ds-post-report" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-report"></span>' + k.report + "</a>" + (e.privileges["delete"] ? '<a class="ds-post-delete" href="javascript:void(0);" target="_blank" rel="noopener"><span class="ds-icon ds-icon-delete"></span>' + k["delete"] + "</a>": "");
                 break;
             case "qqt":
             case "weibo":
-                o += '<a class="ds-weibo-comments" href="javascript:void(0);" target="_blank" rel="external">' + k.comments + (e.type.match(/\-comment$/) ? "": '(<span class="ds-count">' + e.comments + "</span>)") + "</a>" + '<a class="ds-weibo-reposts" href="javascript:void(0);" target="_blank" rel="external">' + k.reposts + (e.type.match(/\-comment$/) ? "": '(<span class="ds-count">' + e.reposts + "</span>)") + "</a>";
+                o += '<a class="ds-weibo-comments" href="javascript:void(0);" target="_blank" rel="noopener">' + k.comments + (e.type.match(/\-comment$/) ? "": '(<span class="ds-count">' + e.comments + "</span>)") + "</a>" + '<a class="ds-weibo-reposts" href="javascript:void(0);" target="_blank" rel="noopener">' + k.reposts + (e.type.match(/\-comment$/) ? "": '(<span class="ds-count">' + e.reposts + "</span>)") + "</a>";
                 break;
             default:
             }
             return '<li class="ds-post" data-post-id="' + e.post_id + '"><div class="ds-post-self" data-post-id="' + e.post_id + '" data-thread-id="' + e.thread_id + '" data-root-id="' + e.root_id + '" data-source="' + e.source + '"><div class="ds-avatar" '="" +="" r="" "="">" + J.avatar(n) + (w.sourceName[e.source] ? J.serviceIcon(e.source) : "") + '</div><div class="ds-comment-body"><div class="ds-comment-header">' + (n.url ? '<a class="ds-user-name ds-highlight" data-qqt-account="' + s + '" href="' + p(n.url) + '" '="" +="" (n.user_id="" ?="" "="" onclick="\"this.href='"" w.hosturl="" user-url="" ?user_id=" + n.user_id + " ';\"":="" "")="" rel="nofollow" target="_blank" r="">" + p(n.name) + "</a>": '<span class="ds-user-name" '="" +="" r="" data-qqt-account="'+s+'">'+p(n.name)+"</span>") + "<span class="\"ua\"">" + sskadmin(e.author) + "<span class="\"ua\"">" + show_ua(e.agent) + "</span></span></div>" + (t.max_depth == 1 && t.show_context && u.length ? '<ol id="ds-ctx">' + i.map(u,
             function(e, t) {
-                return (t == 1 && u.length > 2 ? '<li class="ds-ctx-entry"><a href="javascript:void(0);" class="ds-expand" target="_blank" rel="external">\u8fd8\u6709' + (u.length - 2) + "\u6761\u8bc4\u8bba</a></li>": "") + (ot[e] ? J.ctxPost(ot[e].data, t, t && t < u.length - 1) : "")
+                return (t == 1 && u.length > 2 ? '<li class="ds-ctx-entry"><a href="javascript:void(0);" class="ds-expand" target="_blank" rel="noopener">\u8fd8\u6709' + (u.length - 2) + "\u6761\u8bc4\u8bba</a></li>": "") + (ot[e] ? J.ctxPost(ot[e].data, t, t && t < u.length - 1) : "")
             }).join("") + "</ol>": "") + "<p>" + (u.length >= t.max_depth && (!t.show_context || t.max_depth > 1) && e.parent_id && ot[e.parent_id] ? '<a class="ds-comment-context" data-post-id="' + e.post_id + '" data-parent-id="' + e.parent_id + '">' + k.reply_to + p(K(ot[e.parent_id].data).name) + ": </a>": "") + e.message + '</p><div class="ds-comment-footer ds-comment-actions' + (e.vote > 0 ? " ds-post-liked":="" "")="" +="" '"="">' + o + "</div></div></div>" + (t.max_depth > 1 && (e.childrenArray || e.children) && e.source != "weibo" && e.source != "qqt" ? '<ul class="ds-children">' + i.map(e.childrenArray || e.children,
             function(e) {
                 return ot[e] ? J.post(ot[e].data, t) : ""
@@ -1634,7 +1634,7 @@ function sskadmin(e) {
         },
         J.toolbar = function(e) {
             var t = J.logoutUrl();
-            return '<div class="ds-toolbar"><div class="ds-account-control"><span class="ds-icon ds-icon-settings"></span> <span>\u5e10\u53f7\u7ba1\u7406</span><ul><li><a class="ds-bind-more" href="javascript:void(0);" style="border-top: none" target="_blank" rel="external">\u7ed1\u5b9a\u66f4\u591a</a></li><li><a target="_blank" href="' + w.REMOTE + " settings="" "="" +="" w(x())="" '"="">' + p(k.settings) + "</a></li>" + '<li><a rel="nofollow" href="' + t + '" style="border-bottom: none">\u767b\u51fa</a></li>' + "</ul>" + "</div>" + '<div class="ds-visitor">' + (rt.data.url ? '<a class="ds-visitor-name" href="' + p(rt.data.url) + '" target="_blank">' + p(rt.data.name) + "</a>": '<span class="ds-visitor-name">' + p(rt.data.name) + "</span>") + '<a class="ds-unread-comments-count" href="javascript:void(0);" title="\u65b0\u56de\u590d" target="_blank" rel="external"></a>' + "</div>" + "</div>"
+            return '<div class="ds-toolbar"><div class="ds-account-control"><span class="ds-icon ds-icon-settings"></span> <span>\u5e10\u53f7\u7ba1\u7406</span><ul><li><a class="ds-bind-more" href="javascript:void(0);" style="border-top: none" target="_blank" rel="noopener">\u7ed1\u5b9a\u66f4\u591a</a></li><li><a target="_blank" href="' + w.REMOTE + " settings="" "="" +="" w(x())="" '"="">' + p(k.settings) + "</a></li>" + '<li><a rel="nofollow" href="' + t + '" style="border-bottom: none">\u767b\u51fa</a></li>' + "</ul>" + "</div>" + '<div class="ds-visitor">' + (rt.data.url ? '<a class="ds-visitor-name" href="' + p(rt.data.url) + '" target="_blank">' + p(rt.data.name) + "</a>": '<span class="ds-visitor-name">' + p(rt.data.name) + "</span>") + '<a class="ds-unread-comments-count" href="javascript:void(0);" title="\u65b0\u56de\u590d" target="_blank" rel="noopener"></a>' + "</div>" + "</div>"
         },
         H.EmbedThread = R.extend({
             uri: "/api/threads/listPosts",

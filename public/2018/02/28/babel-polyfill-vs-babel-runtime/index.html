@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>babel-polyfill VS babel-runtime | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Babel," />
+  
+
+  <meta name="description" content="背景在项目迭代过程中，因为有兼容 IE 的需求，根据文档使用babel-polyfill和babel-runtime两个插件解决问题。但是对于二者之间的恩怨情仇，却不甚了解，便打算细细探究一番。 关于 Babel如果我们没有配置一些规则，Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如 Iterator、Generator、Set、Maps、Pr">
+<meta name="keywords" content="Babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="babel-polyfill VS babel-runtime">
+<meta property="og:url" content="http://billqiu.github.io/2018/02/28/babel-polyfill-vs-babel-runtime/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="背景在项目迭代过程中，因为有兼容 IE 的需求，根据文档使用babel-polyfill和babel-runtime两个插件解决问题。但是对于二者之间的恩怨情仇，却不甚了解，便打算细细探究一番。 关于 Babel如果我们没有配置一些规则，Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如 Iterator、Generator、Set、Maps、Pr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.souche.com/f2e/b52b1660f95dc4849402e60c79befcdb.png">
+<meta property="og:updated_time" content="2018-03-01T01:54:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="babel-polyfill VS babel-runtime">
+<meta name="twitter:description" content="背景在项目迭代过程中，因为有兼容 IE 的需求，根据文档使用babel-polyfill和babel-runtime两个插件解决问题。但是对于二者之间的恩怨情仇，却不甚了解，便打算细细探究一番。 关于 Babel如果我们没有配置一些规则，Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如 Iterator、Generator、Set、Maps、Pr">
+<meta name="twitter:image" content="http://img.souche.com/f2e/b52b1660f95dc4849402e60c79befcdb.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于-Babel"><span class="toc-text">关于 Babel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-polyfill"><span class="toc-text">babel-polyfill</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-runtime"><span class="toc-text">babel-runtime</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用法-1"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不足"><span class="toc-text">不足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#And-more"><span class="toc-text">And more</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-babel-polyfill-vs-babel-runtime" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">babel-polyfill VS babel-runtime</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2018/02/28/babel-polyfill-vs-babel-runtime/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><img src="http://img.souche.com/f2e/b52b1660f95dc4849402e60c79befcdb.png"></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在项目迭代过程中，因为有兼容 IE 的需求，根据文档使用<code>babel-polyfill</code>和<code>babel-runtime</code>两个插件解决问题。但是对于二者之间的恩怨情仇，却不甚了解，便打算细细探究一番。</p>
+<h2 id="关于-Babel"><a href="#关于-Babel" class="headerlink" title="关于 Babel"></a>关于 Babel</h2><p>如果我们没有配置一些规则，Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign ）都不会转码。<br>所以，当这样的代码出现时：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> key = <span class="string">'babel'</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    [key]: <span class="string">'foo'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Babel 默认会编译成下面的代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_defineProperty</span>(<span class="params">obj, key, value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(obj, key, &#123; <span class="attr">value</span>: value, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span>, <span class="attr">writable</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        obj[key] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> key = <span class="string">'babel'</span>;</span><br><span class="line"><span class="keyword">var</span> obj = _defineProperty(&#123;&#125;, key, <span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">key</span>: <span class="string">'foo'</span> &#125;));</span><br></pre></td></tr></table></figure></p>
+<p>我们可以看到代码中多了一个名为<code>_defineProperty</code>的帮助函数，但是这个帮助函数仅仅在当前模块中生效，因此其他模块中如果用到了同样的语法，编译后就会出现大量的重复代码。</p>
+<h2 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h2><p>原理是当运行环境中并没有实现的一些方法，babel-polyfill 会给其做兼容。<br>但是这样做也有一个缺点，就是会污染全局变量，而且项目打包以后体积会增大很多，因为把整个依赖包也搭了进去。所以并不推荐在一些方法类库中去使用。</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code>1. `npm install --save babel-polyfill`
+2. 在应用的入口引用，以确保它能够最先加载：
+`import &quot;babel-polyfill&quot;;` 或者
+`require(&quot;babel-polyfill&quot;);`
+</code></pre><h2 id="babel-runtime"><a href="#babel-runtime" class="headerlink" title="babel-runtime"></a>babel-runtime</h2><p>为了不污染全局对象和内置的对象原型，但是又想体验使用新鲜语法的快感。就可以配合使用<code>babel-runtime</code>和<code>babel-plugin-transform-runtime</code>。<br>比如当前运行环境不支持<code>promise</code>，可以通过引入<code>babel-runtime/core-js/promise</code>来获取<code>promise</code>，<br>或者通过<code>babel-plugin-transform-runtime</code>自动重写你的<code>promise</code>。也许有人会奇怪，为什么会有两个<code>runtime</code>插件，其实是有历史原因的：刚开始开始只有<code>babel-runtime</code>插件，但是用起来很不方便，在代码中直接引入<code>helper</code> 函数，意味着不能共享，造成最终打包出来的文件里有很多重复的<code>helper</code>代码。所以，<code>Babel</code>又开发了<code>babel-plugin-transform-runtime</code>，这个模块会将我们的代码重写，如将<code>Promise</code>重写成<code>_Promise</code>（只是打比方），然后引入<code>_Promise helper</code>函数。这样就避免了重复打包代码和手动引入模块的痛苦。</p>
+<h3 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h3><pre><code>1. `npm install --save-dev babel-plugin-transform-runtime`
+2. `npm install --save babel-runtime`
+3. 写入 `.babelrc`
+</code></pre><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"plugins"</span>: [<span class="string">"transform-runtime"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启用插件<code>babel-plugin-transform-runtime</code>后，<code>Babel</code>就会使用<code>babel-runtime</code>下的工具函数，转译代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _defineProperty2 = <span class="built_in">require</span>(<span class="string">'babel-runtime/helpers/defineProperty'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _defineProperty3 = _interopRequireDefault(_defineProperty2);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_interopRequireDefault</span>(<span class="params">obj</span>) </span>&#123; <span class="keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : &#123; <span class="attr">default</span>: obj &#125;; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> key = <span class="string">'babel'</span>;</span><br><span class="line"><span class="keyword">var</span> obj = (<span class="number">0</span>, _defineProperty3.default)(&#123;&#125;, key, <span class="string">'foo'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p><code>babel-runtime</code> 不能转码实例方法，比如这样的代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'!!!'</span>.repeat(<span class="number">3</span>);</span><br><span class="line"><span class="string">'hello'</span>.includes(<span class="string">'h'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这只能通过 babel-polyfill 来转码，因为 babel-polyfill 是直接在原型链上增加方法。</p>
+<h2 id="And-more"><a href="#And-more" class="headerlink" title="And more"></a>And more</h2><p>随着历史进程的发展，新一代的 <a href="https://github.com/babel/babel/tree/master/packages/babel-preset-env" target="_blank" rel="noopener">babel-prenset-env</a> 很强大，了解一下😜</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://blog.zfanw.com/babel-js/#x3-babel-runtime" target="_blank" rel="noopener">babel 教程</a></li>
+<li><a href="https://github.com/brunoyang/blog/issues/20" target="_blank" rel="noopener">Babel 全家桶 · Issue #20 · brunoyang/blog · GitHub</a></li>
+<li><a href="https://babeljs.io/docs/plugins/transform-runtime/" target="_blank" rel="noopener">Runtime transform · Babel</a></li>
+<li><a href="https://babeljs.io/docs/usage/polyfill/#usage-in-node--browserify--webpack" target="_blank" rel="noopener">Polyfill · Babel</a></li>
+</ul>
+<p>自由转载-非商用-非衍生-保持署名（<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="noopener">创意共享3.0许可证</a>）</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/01/25/key-in-react/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/03/26/awesome-npx/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2018/02/28/babel-polyfill-vs-babel-runtime/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

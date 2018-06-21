@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Awesome npx | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="npx," />
+  
+
+  <meta name="description" content="背景在gayhub闲逛时，不知怎么突然想看看create-react-app（以下简称 create）的源码，来到项目主页，无意中瞄到README.md好像发生了一点小小的变化。  npx create-react-app my-app  这个 npx 是什么鬼，突然想起来前几天好像也在一些 npm 的工具包上看到过这个玩意儿，但是没有注意。既然今天又碰到了，那就好好把玩一下，毕竟create也用">
+<meta name="keywords" content="npx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Awesome npx">
+<meta property="og:url" content="http://billqiu.github.io/2018/03/26/awesome-npx/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="背景在gayhub闲逛时，不知怎么突然想看看create-react-app（以下简称 create）的源码，来到项目主页，无意中瞄到README.md好像发生了一点小小的变化。  npx create-react-app my-app  这个 npx 是什么鬼，突然想起来前几天好像也在一些 npm 的工具包上看到过这个玩意儿，但是没有注意。既然今天又碰到了，那就好好把玩一下，毕竟create也用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-26T09:42:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Awesome npx">
+<meta name="twitter:description" content="背景在gayhub闲逛时，不知怎么突然想看看create-react-app（以下简称 create）的源码，来到项目主页，无意中瞄到README.md好像发生了一点小小的变化。  npx create-react-app my-app  这个 npx 是什么鬼，突然想起来前几天好像也在一些 npm 的工具包上看到过这个玩意儿，但是没有注意。既然今天又碰到了，那就好好把玩一下，毕竟create也用">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npx-带来了什么"><span class="toc-text">npx 带来了什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接使用项目下的工具包"><span class="toc-text">直接使用项目下的工具包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直接运行远端脚本"><span class="toc-text">直接运行远端脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作为一个工具包的开发者"><span class="toc-text">作为一个工具包的开发者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell-auto-fallback"><span class="toc-text">shell auto-fallback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-awesome-npx" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Awesome npx</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.03.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2018/03/26/awesome-npx/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在<code>gayhub</code>闲逛时，不知怎么突然想看看<code>create-react-app</code>（以下简称 create）的源码，来到项目<a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">主页</a>，无意中瞄到<code>README.md</code>好像发生了一点小小的变化。</p>
+<blockquote>
+<p><code>npx create-react-app my-app</code></p>
+</blockquote>
+<p>这个 npx 是什么鬼，突然想起来前几天好像也在一些 npm 的工具包上看到过这个玩意儿，但是没有注意。既然今天又碰到了，那就好好把玩一下，毕竟<code>create</code>也用到了它，应该是个值得一用的好东西。看了下项目的修改记录，大约是在两个月前加入使用<code>npx</code>的，这也从侧面说明<code>npx</code>已基本趋于稳定，可以大胆的使用了。</p>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>上网简单查阅了下资料，原来 npx 是跟随 <a href="mailto:npm@5.2.0" target="_blank" rel="noopener">npm@5.2.0</a> 发布的，使用5.2.0版本之后的 npm，会自动帮你安上 npx，这么大的推广力度，很难不引起关注啊，之前咋没发现呐？或许是因为好久都没有升级 npm 版本的缘故吧。毕竟本地的 node 版本，不久以前才从 6.x 升级到的 8.x。对于我们这些前端开发人员来说，稳定是最重要的，基本也没有什么切换 node 版本的需求。</p>
+<p>以下的总结，基本都是这篇 Medium 上的<a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" target="_blank" rel="noopener">文章</a>搬过来的，英语基础不错的同学，可以尝试直接阅读原文。</p>
+<h2 id="npx-带来了什么"><a href="#npx-带来了什么" class="headerlink" title="npx 带来了什么"></a>npx 带来了什么</h2><h3 id="直接使用项目下的工具包"><a href="#直接使用项目下的工具包" class="headerlink" title="直接使用项目下的工具包"></a>直接使用项目下的工具包</h3><p>以前我们使用<code>create-react-app</code> 初始化一个项目，大致需要以下步骤：</p>
+<pre><code>1. `$ npm i create-react-app -g`
+2. `$ cd project-directory`
+3. `$ create-react-app my-app`
+</code></pre><p>如果我们使用 npx，并且刚好在想要创建项目的目录下，一行命令就可以搞定：<br><code>npx create-react-app my-project</code><br>npx 帮我们做了什么事呐？</p>
+<pre><code>1. 在当前目录下寻找是否存在 create 包
+2. 如果没有找到，则会去根目录下寻找是否全局安装过 create
+3. 如果还没有找到，就会下载并使用最新版本的 create ，然后初始化项目，完成后，不会有任何多余依赖的残留
+</code></pre><p>相比于之前的使用方式，npx 带给我们的便处是显而易见的。对于 create 这种我们使用频率并不高的工具，其实安装在全局下的必要性并不大。下一次使用的时候，说不定就之前已经迭代好几个版本了。对于 mac 用户来说，容量寸土寸金，而 node_modules 的大小却是不容小觑的。</p>
+<h3 id="直接运行远端脚本"><a href="#直接运行远端脚本" class="headerlink" title="直接运行远端脚本"></a>直接运行远端脚本</h3><p><a href="https://gist.github.com/" target="_blank" rel="noopener">gist</a> 在日常开发中使用还是比较广泛的，没有程序员愿意一次又一次的写重复写代码。如果我们想执行放在 gist 上的一段 node 脚本，直接用 npx  一行命令即可搞定。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32</span><br><span class="line">npx: installed 1 in 5.217s</span><br><span class="line">yay gist</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是，出于安全性考虑，请先通读 gits 上的代码是安全的，再执行命令，就像你要执行一段<code>.sh</code>脚本一样小心。</p>
+<h3 id="作为一个工具包的开发者"><a href="#作为一个工具包的开发者" class="headerlink" title="作为一个工具包的开发者"></a>作为一个工具包的开发者</h3><p>我可以直接在<code>README.md</code>中写上<code>$ npx my-tool</code>，让用户使用我开发工具，这个使用体验可以说是相当舒爽的。<br>你可以直接体验一些有意思的工具包，happy-birthday，benny-hill，workin-hard，cowsay， yo， create-react-app， npm-check等，详见<a href="https://github.com/js-n/awesome-npx" target="_blank" rel="noopener">awesome-npx 🕶</a>。<br>也许你担心放在 <code>snpm</code>上的工具无法使用，其实大可放心，用<code>nrm</code>等工具指定下源即可完美下载使用。或者麻烦一点就这样写：<code>npx --registry=http://registry.npm.souche-inc.com @souche-f2e/sad-cli -h</code>，指定 registry 即可。</p>
+<h3 id="shell-auto-fallback"><a href="#shell-auto-fallback" class="headerlink" title="shell auto-fallback"></a>shell auto-fallback</h3><p>这个不知道翻译合适，就先不翻译了🤔。<br>其作用就是让我们<strong>方便地</strong>使用不同版本的依赖包，比如我本地安装的是 <a href="mailto:babel@6.x" target="_blank" rel="noopener">babel@6.x</a>，但是我想使用 <a href="mailto:babel@5.x" target="_blank" rel="noopener">babel@5.x</a> 看看执行效果，直接执行<code>babel@5 filename.js</code>即可。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> bebel@5 -V</span><br><span class="line">babel@5 not found. Trying with npx...</span><br><span class="line">5.8.38 (babel-core 5.8.38)</span><br></pre></td></tr></table></figure></p>
+<p>当然想只用这个功能，还是需要做一些配置的：<br>将对应的代码添加到对应的文件中即可， <code>~/.bashrc, ~/.zshrc, ~/.config/fish/config.fish</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">For bash@&gt;=4:</span><br><span class="line">$ source &lt;(npx --shell-auto-fallback bash)</span><br><span class="line"></span><br><span class="line">For zsh:</span><br><span class="line">$ source &lt;(npx --shell-auto-fallback zsh)</span><br><span class="line"></span><br><span class="line">For fish:</span><br><span class="line">$ source (npx --shell-auto-fallback fish | psub)</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" target="_blank" rel="noopener">Introducing npx: an npm package runner – Kat Marchán – Medium</a></li>
+</ul>
+<p>自由转载-非商用-非衍生-保持署名<a href="https://link.juejin.im/?target=https%3A%2F%2Fcreativecommons.org%2Flicenses%2Fby-nc-nd%2F3.0%2Fdeed.zh" target="_blank" rel="noopener">（创意共享3.0许可证）</a></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/02/28/babel-polyfill-vs-babel-runtime/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/04/12/react-vs-vue/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2018/03/26/awesome-npx/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

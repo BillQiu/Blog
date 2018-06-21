@@ -212,7 +212,7 @@
   <div class="article-content">
     
       <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>background-clip</code>是CSS3中新加入属性，用来设置元素的背景（背景图片或颜色）是否延伸到边框下面。</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">border</span> &#123;</div><div class="line">    <span class="built_in">background</span>-clip: <span class="built_in">border</span>-<span class="built_in">box</span>;   //默认值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.border &#123;</span><br><span class="line">    background-clip: border-box;   //默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="值-Values"><a href="#值-Values" class="headerlink" title="值(Values)"></a>值(Values)</h3><p><code>background-clip</code>一共有三个值：</p>
 <ol>
 <li>border-box<br>默认值，背景延伸到边框外沿（但是在边框之下）。</li>
@@ -222,7 +222,7 @@
 </ol>
 <h2 id="示例-Demo"><a href="#示例-Demo" class="headerlink" title="示例(Demo)"></a>示例(Demo)</h2><p><iframe width="100%" height="300" src="//jsfiddle.net/bill_q/rm4tov8q/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>上述4个例子的HTML代码结构完全相同，为div设置的背景颜色为黄色，边框颜色为半透明的蓝色。<br>当<code>background-clip</code>的值为默认值<code>border-box</code>时，可以看到边框的颜色变成了灰色。这是因为div的背景颜色延伸到了边框外沿，背景色黄色和边框的半透明蓝色混合在一起显示为灰色。<br>当<code>background-clip</code>的值为<code>padding-box</code>时，div的背景色被限制在外边框之内，外边框的颜色为呈现为当初设置的半透明蓝。<br>当<code>background-clip</code>的值为<code>content-box</code>时，只有div中的内容——p标签——的背景色为黄色。div的padding和border没有背景色。这里需要注意一点，div容器内的p标签的整个盒模型(padding+marging+content)都会有黄色的背景色。</p>
 <p>TO BE CONTINUED!</p>
-<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="external">css-tricks</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank" rel="external">MDN</a></p>
+<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="noopener">css-tricks</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank" rel="noopener">MDN</a></p>
 
     
   </div>

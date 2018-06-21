@@ -211,16 +211,16 @@
 
   <div class="article-content">
     
-      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>background-size</code>属性主要用来对<code>background-image</code>进行一系列的操作，功能很强大也非常有用。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(greatimage.jpg);</div><div class="line">  <span class="attribute">background-size</span>: <span class="number">300px</span> <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>background-size</code>属性主要用来对<code>background-image</code>进行一系列的操作，功能很强大也非常有用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">  background: url(greatimage.jpg);</span><br><span class="line">  background-size: 300px 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="三种描述方式"><a href="#三种描述方式" class="headerlink" title="三种描述方式"></a>三种描述方式</h2><ul>
 <li>单值</li>
 <li>双值</li>
 <li>多背景<a id="more"></a>
-<h3 id="单值-One-Value"><a href="#单值-One-Value" class="headerlink" title="单值(One Value)"></a>单值(One Value)</h3>单值的表示方式有两种：数值和关键字。<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(greatimage.jpg);</div><div class="line">    <span class="attribute">background-size</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="单值-One-Value"><a href="#单值-One-Value" class="headerlink" title="单值(One Value)"></a>单值(One Value)</h3>单值的表示方式有两种：数值和关键字。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">    background: url(greatimage.jpg);</span><br><span class="line">    background-size: 300px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>仅仅用一个数值描述<code>background-size</code>，如果容器的宽高足够，最后的得到的背景图片必然为一个矩形。因为背景图片的宽度值被定义为300px后，由于没有为其定高，则高度值默认为<code>auto</code>，也就是300px。<br>在用数值定义<code>background-size</code>时，可以使用任意合适的<a href="https://css-tricks.com/the-lengths-of-css" target="_blank" rel="external">CSS长度单位</a>。</p>
-<p>同理也可以使用百分比来进行描述。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">background</span>: url(<span class="string">greatimage.jpg</span>);</div><div class="line">    <span class="attribute">background-size</span>: <span class="number">50%</span>;   <span class="comment">//50%图片的大小</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>仅仅用一个数值描述<code>background-size</code>，如果容器的宽高足够，最后的得到的背景图片必然为一个矩形。因为背景图片的宽度值被定义为300px后，由于没有为其定高，则高度值默认为<code>auto</code>，也就是300px。<br>在用数值定义<code>background-size</code>时，可以使用任意合适的<a href="https://css-tricks.com/the-lengths-of-css" target="_blank" rel="noopener">CSS长度单位</a>。</p>
+<p>同理也可以使用百分比来进行描述。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">    background: url(greatimage.jpg);</span><br><span class="line">    background-size: 50%;   //50%图片的大小</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>再说说常用的两个关键词<code>cover</code>与<code>contain</code>。</p>
 <ul>
 <li>cover：把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。背景图像的某些部分也许无法显示在背景定位区域中。</li>
@@ -233,7 +233,7 @@
 <li>单值、双值的方式可以混合使用，但注意要用逗号分隔。</li>
 </ol>
 <p>TO BE CONTINUED!</p>
-<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="external">css-tricks</a></p>
+<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="noopener">css-tricks</a></p>
 
     
   </div>

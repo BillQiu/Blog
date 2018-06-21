@@ -213,27 +213,27 @@
 
   <div class="article-content">
     
-      <h2 id="开宗明义"><a href="#开宗明义" class="headerlink" title="开宗明义"></a>开宗明义</h2><p><code>background</code>，一个最常用的CSS属性，只要是写过CSS的人，都肯定用过这个属性。<br>正如他的字面意思：背景，我们平常更多地用他来设置背景颜色。殊不知background是一个强大的家族，共有八个兄弟姐妹，background八日谈系类文章将分八个章节对他们进行一一介绍，相信你定会对他们有一个新的认识。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">background</span>:</div><div class="line">     <span class="built_in">url</span>(sweettexture.jpg)    <span class="comment">/* image */</span></div><div class="line">     top center / <span class="number">200px</span> <span class="number">200px</span> <span class="comment">/* position / size */</span></div><div class="line">     no-repeat                <span class="comment">/* repeat */</span></div><div class="line">     fixed                    <span class="comment">/* attachment */</span></div><div class="line">     padding-box              <span class="comment">/* origin */</span></div><div class="line">     content-box              <span class="comment">/* clip */</span></div><div class="line">     red;                     <span class="comment">/* color */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+      <h2 id="开宗明义"><a href="#开宗明义" class="headerlink" title="开宗明义"></a>开宗明义</h2><p><code>background</code>，一个最常用的CSS属性，只要是写过CSS的人，都肯定用过这个属性。<br>正如他的字面意思：背景，我们平常更多地用他来设置背景颜色。殊不知background是一个强大的家族，共有八个兄弟姐妹，background八日谈系类文章将分八个章节对他们进行一一介绍，相信你定会对他们有一个新的认识。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">  background:</span><br><span class="line">     url(sweettexture.jpg)    /* image */</span><br><span class="line">     top center / 200px 200px /* position / size */</span><br><span class="line">     no-repeat                /* repeat */</span><br><span class="line">     fixed                    /* attachment */</span><br><span class="line">     padding-box              /* origin */</span><br><span class="line">     content-box              /* clip */</span><br><span class="line">     red;                     /* color */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h2 id="图片类型"><a href="#图片类型" class="headerlink" title="图片类型"></a>图片类型</h2><p>在CSS中，图片大致大致可以分为两大类：常规图片(regular images)和渐变图片(gradients)，本文也根据图片类型分为两部分来介绍<code>background-image</code>。</p>
-<h3 id="常规图片-regular-images"><a href="#常规图片-regular-images" class="headerlink" title="常规图片(regular images)"></a>常规图片(regular images)</h3><p>从我们最常用的常规图片说起，<code>background: url(sweettexture.jpg);</code>这个属性大家都不会陌生，对相应的元素设置一个名为sweettexture的jpg格式的是图片。<br>当然这只是最基础的，如果我们想让图片置于一个合理的位置，常常会与<code>background-repeat</code>、<code>background-position</code>等属性配合使用。<br>在设置常规图片时，一定要考虑到浏览器是否能识别图片的格式，几乎所有的浏览器都支持JPEG、GIF、PNG格式的图片，如果要用到其他格式的图片就要慎重考虑了。至于以上三种图片的应用场景，以超出本文的讨论范围，请大家自行<a href="https://www.google.com" target="_blank" rel="external">google</a>(不要百度！不要百度！不要百度！)</p>
-<p>除了以上几种常用的引入图片的类型，还有一种base64的图片格式，大家可能用的比较少。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">background</span>-<span class="built_in">image</span>:url(data:<span class="built_in">image</span>/gif;<span class="built_in">base64</span>,R0lGODlhBAABAIABAMLBwfLx8SH5BAEAAAEALAAAAAAEAAEAAAICRF4AOw==);</div></pre></td></tr></table></figure></p>
+<h3 id="常规图片-regular-images"><a href="#常规图片-regular-images" class="headerlink" title="常规图片(regular images)"></a>常规图片(regular images)</h3><p>从我们最常用的常规图片说起，<code>background: url(sweettexture.jpg);</code>这个属性大家都不会陌生，对相应的元素设置一个名为sweettexture的jpg格式的是图片。<br>当然这只是最基础的，如果我们想让图片置于一个合理的位置，常常会与<code>background-repeat</code>、<code>background-position</code>等属性配合使用。<br>在设置常规图片时，一定要考虑到浏览器是否能识别图片的格式，几乎所有的浏览器都支持JPEG、GIF、PNG格式的图片，如果要用到其他格式的图片就要慎重考虑了。至于以上三种图片的应用场景，以超出本文的讨论范围，请大家自行<a href="https://www.google.com" target="_blank" rel="noopener">google</a>(不要百度！不要百度！不要百度！)</p>
+<p>除了以上几种常用的引入图片的类型，还有一种base64的图片格式，大家可能用的比较少。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image:url(data:image/gif;base64,R0lGODlhBAABAIABAMLBwfLx8SH5BAEAAAEALAAAAAAEAAEAAAICRF4AOw==);</span><br></pre></td></tr></table></figure></p>
 <p><code>data:[&lt;mime type&gt;][;charset=&lt;charset&gt;][;base64],&lt;encoded data&gt;</code><br>优点：</p>
 <ul>
 <li>减少了HTTP请求</li>
 <li>某些文件可以避免跨域的问题</li>
 <li>没有图片更新要重新上传，还要清理缓存的问题<br>缺点：</li>
 <li>增加了CSS文件的尺寸</li>
-<li>浏览器支持<br>想要了解base64图片的，可以看看张老师写的这篇<a href="http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_blank" rel="external">文章</a>。</li>
+<li>浏览器支持<br>想要了解base64图片的，可以看看张老师写的这篇<a href="http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener">文章</a>。</li>
 </ul>
-<p>对同一个元素，我们可以通过<code>background-image</code>设置多个背景图片。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(logo.png), <span class="built_in">url</span>(background-pattern.png);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对同一个元素，我们可以通过<code>background-image</code>设置多个背景图片。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">  background: url(logo.png), url(background-pattern.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里有一点需要注意——图片的设置顺序，越先声明的层次优先级越高。<br>举个栗子，如果声明的第二个背景图片的尺寸比第一个小，并且没有进行定位，就会被第一个申明的背景图片覆盖。</p>
 <iframe width="100%" height="200" src="//jsfiddle.net/bill_q/34pyvr7k/1/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <p>在使用背景图片的时候，我们有时会遇到图片无法加载的情况，为此可以为背景图片设置一个<b>回调颜色</b>，在图片无法加载的情况下代替图片显示。</p>
 <iframe width="100%" height="150" src="//jsfiddle.net/bill_q/70x9cbLo/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<h3 id="渐变图片-gradients"><a href="#渐变图片-gradients" class="headerlink" title="渐变图片(gradients)"></a>渐变图片(gradients)</h3><p></p><p style="font-size: 17px">线性渐变</p><br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">background</span>: <span class="built_in">linear</span>-gradient(angle, <span class="built_in">color</span>-stop1, <span class="built_in">color</span>-stop2);</div></pre></td></tr></table></figure><p></p>
+<h3 id="渐变图片-gradients"><a href="#渐变图片-gradients" class="headerlink" title="渐变图片(gradients)"></a>渐变图片(gradients)</h3><p></p><p style="font-size: 17px">线性渐变</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(angle, color-stop1, color-stop2);</span><br></pre></td></tr></table></figure><p></p>
 <p>依旧从我们最熟悉的线性渐变开始说起，如果没有设置angle值，默认从上到下。</p>
 <iframe width="100%" height="200" src="//jsfiddle.net/bill_q/sy1Laak7/1/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
@@ -246,7 +246,7 @@
 <p>当想要控制色块中某种颜色开始或结束的位置，可以使用<code>%</code>进行控制</p>
 <iframe width="100%" height="200" src="//jsfiddle.net/bill_q/73m47n7L/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<p></p><p style="font-size: 17px">径向渐变</p><br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">background</span>: radial-gradient(shape size <span class="built_in">at</span> <span class="built_in">position</span>, start-<span class="built_in">color</span>, ..., <span class="built_in">last</span>-<span class="built_in">color</span>);</div></pre></td></tr></table></figure><p></p>
+<p></p><p style="font-size: 17px">径向渐变</p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: radial-gradient(shape size at position, start-color, ..., last-color);</span><br></pre></td></tr></table></figure><p></p>
 <p>径向渐变与线性渐变大体相同，主要区别在于angle与shape size at position上。<br>默认从内向外扩散。</p>
 <iframe width="100%" height="300" src="//jsfiddle.net/bill_q/cgssdgbc/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
@@ -254,13 +254,13 @@
 <h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>关于多背景图，我们可以对其设置多样CSS3动画，并且完全不需要JS的介入。</p>
 <iframe width="100%" height="300" src="//jsfiddle.net/bill_q/eb08a191/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<p>巧妙运用渐变，会得到一系列意想不到的<a href="http://lea.verou.me/css3patterns/" target="_blank" rel="external">图案</a>。</p>
+<p>巧妙运用渐变，会得到一系列意想不到的<a href="http://lea.verou.me/css3patterns/" target="_blank" rel="noopener">图案</a>。</p>
 <p>TO BE CONTINUED!</p>
 <p>参考文献：</p>
 <ol>
-<li><a href="https://css-tricks.com/" target="_blank" rel="external">https://css-tricks.com/</a></li>
-<li><a href="http://www.w3schools.com/" target="_blank" rel="external">http://www.w3schools.com/</a></li>
-<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</a></li>
+<li><a href="https://css-tricks.com/" target="_blank" rel="noopener">https://css-tricks.com/</a></li>
+<li><a href="http://www.w3schools.com/" target="_blank" rel="noopener">http://www.w3schools.com/</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</a></li>
 </ol>
 
     

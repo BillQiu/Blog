@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>谈谈 react 中的 key | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="react,js,key," />
+  
+
+  <meta name="description" content="前言 如果你用过 react，并且曾经尝试遍历数组来渲染一个组件，就应该遇到过上面的提示。因为提示的等级为 Warning，而非 Error，所以很多开发同学可能就不会去在意，包括我自己。在前几天开发一个需要动态渲染的组件时，才发现的了 key 的妙用，也因此打算研究下 key 到底是干什么用的。 定义   Keys help React identify which items have cha">
+<meta name="keywords" content="react,js,key">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈 react 中的 key">
+<meta property="og:url" content="http://billqiu.github.io/2018/01/25/key-in-react/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="前言 如果你用过 react，并且曾经尝试遍历数组来渲染一个组件，就应该遇到过上面的提示。因为提示的等级为 Warning，而非 Error，所以很多开发同学可能就不会去在意，包括我自己。在前几天开发一个需要动态渲染的组件时，才发现的了 key 的妙用，也因此打算研究下 key 到底是干什么用的。 定义   Keys help React identify which items have cha">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.souche.com/f2e/cf0f9218d8effa21cf4d291a77db6c7c.jpg">
+<meta property="og:image" content="http://img.souche.com/f2e/88f2b0b7f99e637d275b49c4addd1c38.jpg">
+<meta property="og:updated_time" content="2018-01-29T10:31:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="谈谈 react 中的 key">
+<meta name="twitter:description" content="前言 如果你用过 react，并且曾经尝试遍历数组来渲染一个组件，就应该遇到过上面的提示。因为提示的等级为 Warning，而非 Error，所以很多开发同学可能就不会去在意，包括我自己。在前几天开发一个需要动态渲染的组件时，才发现的了 key 的妙用，也因此打算研究下 key 到底是干什么用的。 定义   Keys help React identify which items have cha">
+<meta name="twitter:image" content="http://img.souche.com/f2e/cf0f9218d8effa21cf4d291a77db6c7c.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key-的唯一性"><span class="toc-text">key 的唯一性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key-值不可读"><span class="toc-text">key 值不可读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反模式"><span class="toc-text">反模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-key-in-react" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">谈谈 react 中的 key</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.01.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2018/01/25/key-in-react/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="http://img.souche.com/f2e/cf0f9218d8effa21cf4d291a77db6c7c.jpg" alt="key-warn"></p>
+<p>如果你用过 react，并且曾经尝试遍历数组来渲染一个组件，就应该遇到过上面的提示。因为提示的等级为 <strong>Warning</strong>，而非 Error，所以很多开发同学可能就不会去在意，包括我自己。在前几天开发一个需要动态渲染的组件时，才发现的了 key 的妙用，也因此打算研究下 key 到底是干什么用的。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>  Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a <strong>stable</strong> identity.</p>
+</blockquote>
+<p>key 是用来帮助 react 识别哪些内容被更改、添加或者删除。key 需要写在用数组渲染出来的元素内部，并且需要赋予其一个<strong>稳定</strong>的值。稳定在这里很重要，因为如果 key 值发生了变更，react 则会触发 UI 的重渲染。这是一个非常有用的特性。</p>
+<h3 id="key-的唯一性"><a href="#key-的唯一性" class="headerlink" title="key 的唯一性"></a>key 的唯一性</h3><p>在相邻的元素间，key 值必须是唯一的，如果出现了相同的 key，同样会抛出一个 Warning，告诉相邻组件间有重复的 key 值。并且只会渲染第一个重复 key 值中的元素，因为 react 会认为后续拥有相同 key 的都是同一个组件。</p>
+<h3 id="key-值不可读"><a href="#key-值不可读" class="headerlink" title="key 值不可读"></a>key 值不可读</h3><p>虽然我们在组件上定义了 key，但是在其子组件中，我们并没有办法拿到 key 的值，因为 key 仅仅是给 react 内部使用的。如果我们需要使用到 key 值，可以通过其他方式传入，比如将 key 值赋给 id 等。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="params">item</span> =&gt;</span> &lt;Component key=&#123;item.id&#125; id=&#123;item.id&#125; /&gt;)</span><br></pre></td></tr></table></figure>
+<h2 id="反模式"><a href="#反模式" class="headerlink" title="反模式"></a>反模式</h2><p>很多时候，我们可能并没有在遍历数组渲染组件的时候写上 key 的习惯，因为除了控制台报到一个 Warning，并不会有任何影响。因为赋 key 值这一步 react 帮我们做了，默认使用的是遍历过程中的 index 值。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">'first'</span>, <span class="string">'second'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list1 和 list2 是等价的</span></span><br><span class="line"><span class="keyword">const</span> list1 = arr.map(<span class="function"><span class="params">item</span> =&gt;</span> &lt;p&gt;&#123;item&#125;&lt;<span class="regexp">/p&gt;);</span></span><br><span class="line"><span class="regexp">const list2 = arr.map((item, index) =&gt; &lt;p key=&#123;index&#125;&gt;&#123;item&#125;&lt;/</span>p&gt;);</span><br></pre></td></tr></table></figure>
+<p> 在上面的例子中，如果数组发生了变化，我们需要在数组的末尾插入一个元素 <code>arr.push(&#39;third&#39;)</code>，react 经过 diff 后就会发现 ：key 值为0和1的元素并没有发生如何变化，所以 react 会认为， 最后需要在 UI 上发生变更，仅仅是插入一个 key 值为2的新元素。</p>
+<p>但是如果我们在数组的开头插入了一个新元素<code>arr.unshift(&#39;zero&#39;)</code>，react 经过 diff 后就会发现每一个元素的 key 值都发生了变化，也是就说每个元素都要重新渲染一次，虽然从结果来看，仅仅是在开头添加了一个元素而已。如果负责渲染的数组数据量较大的话，则会对性能造成较大的影响。与 react 使用的启发式算法是相悖的。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- before --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">"0"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">"0"</span>&gt;</span>zero<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">"2"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>因此，推荐的做法是每个兄弟元素都加上一个稳定唯一的 key 值。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>主要应用在 <strong>dynamic stateful components</strong>中，也就是需要动态渲染的子组件。</p>
+<p>下图是一个名为 <code>Filters</code>的组件，内部由一个个<code>condition</code>子组件组成，由 <code>defaultValue</code>负责初始化渲染。<code>defaultValue</code>的值可由组件生成，可以通过 <code>onChange</code>事件获取，默认不传为空数组。通过将之前保存好的值回传给组件，即可渲染需要的 <code>Filters</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> defalutValue = [&#123;</span><br><span class="line">  id: <span class="number">1515134128441</span>,</span><br><span class="line">  tag: <span class="string">'mobile'</span>,	<span class="comment">// 手机号 决定最后需要使用的 input 输入框</span></span><br><span class="line">  flag: [</span><br><span class="line">    <span class="string">'身份标签'</span>,</span><br><span class="line">    <span class="string">`&#123;"code":"location_province_code","valueType":"area_province"&#125;`</span></span><br><span class="line">  ],                <span class="comment">// 决定第一级 级联选框 的默认值</span></span><br><span class="line">  operator: <span class="string">"neq"</span>,  <span class="comment">// 操作符</span></span><br><span class="line">  target: <span class="string">"00001"</span>   <span class="comment">// input 输入框的值</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.souche.com/f2e/88f2b0b7f99e637d275b49c4addd1c38.jpg"></p>
+<p>这里遇到的问题是，<code>condition</code> 子组件的内部已经比较复杂了，需要处理多种情况：</p>
+<ol>
+<li>默认值的渲染</li>
+<li>不同筛选条件要对应不同的赋值符以及条件框</li>
+<li>按照级联的逻辑，父级的变更需要判断子级的状态是否需要改变</li>
+</ol>
+<p>在上述情况中，如果<code>condition</code>要实现接收不同的默认值来展示不同的效果，则需要写一系列复杂的 <code>componentWillReceiveProps</code>生命周期。而且不能保证代码的可读性以及维护性，是一个很可怕的事情。</p>
+<p>但是，如果你在用 <code>defaultValue</code>渲染每个 <code>Condition</code> 的时候，给它加一个唯一稳定的 key 值，就可以完美解决这个问题。我在实现的过程中，用了当前时间戳作为<code>Condition</code>的 key 值，保证其唯一稳定性。在删除、增加标签都能确保正确渲染。如果没有 key 值也没有写<code>componentWillReceiveProps</code>生命周期，在删除的时候就会发生渲染错误。</p>
+<p>简而言之，改变 key 值来重渲染组件是一种——相较于复杂<code>componentWillReceiveProps</code>生命周期——十分低成本的方式。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://juejin.im/post/59abb01c518825243f1b6dad" target="_blank" rel="noopener">[React技术内幕] key带来了什么</a></li>
+<li><a href="https://reactjs.org/docs/lists-and-keys.html" target="_blank" rel="noopener">List and Keys</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/12/13/charles-failed-to-get-https-request/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/02/28/babel-polyfill-vs-babel-runtime/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2018/01/25/key-in-react/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
