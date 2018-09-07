@@ -1,0 +1,175 @@
+# Blog info
+blog_name: Bill Qiu
+slogan: Code my world
+url: http://BillQiu.github.io
+
+# Set avatar (Absolute url and relative url)
+avatar: /images/avatar.jpg
+
+# Set favicon
+favicon: /favicon.ico
+
+# For seo
+keywords: 前端,设计,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript
+
+home_nav:
+  - name: Blog
+    url: /archives
+    target_blank: false #不在新页面打开
+  - name: Project
+    url: /project/
+    target_blank: true #在新页面打开
+  - name: Github
+    url: https://github.com/BillQiu
+    target_blank: true
+  # - name: Twitter
+  #   url: https://twitter.com/forsigner
+  #   target_blank: true
+
+# config page nav
+page_nav:
+  - name: 博客
+    url: /archives/
+    target_blank: false # 不在新页面打开
+  - name: 分类
+    url: /category/
+    target_blank: false
+  - name: 标签
+    url: /tag/
+    target_blank: false
+  # - name: 友链
+  #   url: /link/
+  #   target_blank: false
+  - name: 关于
+    url: /about/
+    target_blank: false
+  # - name: RSS
+  #   url: /atom.xml
+  #   target_blank: true # 在新页面打开
+  - name: 搜索
+    url: /search/
+    target_blank: false # 在新页面打开
+
+page_nav_style: CIRCLE  # CIRCLE|ROUND_RECT
+
+# 面包屑
+breadcrumb:
+  isShow: true # true|fase
+
+# 盒子
+toolbox:
+  isShow: true # true|fase
+  text: 盒子
+
+search_slogan:
+  isShow: true # true|fase
+  text: U guess if i guess ?
+
+# link_slogan:
+#   isShow: true # true|fase
+#   text: 交换友链可以邮件 forsigner@gmail.com
+
+
+# set backtop show or hide
+backtop:
+  home: false
+  archive: false
+  category: true
+  tag: true
+  post: true
+  link: false
+  about: false
+
+donation:
+  show: true
+  btn_text: 支持一下
+  tip: 扫一扫，请我喝杯咖啡☕️
+  items:
+    - type: 微信
+      text: 微信扫一扫
+      imgUrl: /images/qr-wechat.png
+    - type: 支付宝
+      text: 支付宝扫一扫
+      imgUrl: /images/qr-alipay.png
+
+
+
+
+post:
+  header_align: CENTER # LEFT|CENTER
+  showToc: true # true|false
+  showComments: true
+  open_in_new_window: false
+  show_prev_next: true
+
+# =========================================================
+# 个性化设置
+# =========================================================
+
+# Custom CSS style, 推荐把样式文件放在blog源码文件夹，而不是主题里面
+personal_style: /css/personal-style.css
+
+# 这个值取决于你得背景图片是深色还是浅色，深色用dark，浅色用light
+home_background_scheme: light # dark、light
+
+# custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
+blog_name_font_familiy: calligraffittiregular
+# blog_name_font_familiy: Lobster-Regular
+# blog_name_font_familiy: PoiretOne-Regular
+
+init_page_content: HOME_NAV  # HOME_NAV | POST
+
+
+# =========================================================
+# 第三方服务
+# =========================================================
+# Stats
+google_analytics:
+baidu_analytics: 57e94d016e201fba3603a8a2b0263af0
+
+# Comment service
+disqus_shortname: forsigner
+# hypercomments_id: 89821
+# gentie_key: d16a7241e7cd4b389584ed8db2a4e8bc
+
+# 注意，多说即将关闭，建议选用上面四个评论系统
+# duoshuo_shortname: forsigner
+
+# 不算子,文章访问量统计和显示
+busuanzi: true
+
+# =========================================================
+# 页面内容设置
+# =========================================================
+about:
+  - type: me
+    icon: icon-user
+    text_value:
+    - "Bill，1993，Autumn."
+    - "喜欢设计，热爱编程，衷于阅读，终身学习。"
+    - "前端开发工程师"
+  - type: Github
+    icon: icon-github
+    text_key: Github
+    text_value: "@BillQiu"
+    text_value_url: https://github.com/BillQiu
+  - type: mail
+    icon: icon-mail
+    text_key: Gmail
+    text_value: "fanglaiq@gmail.com"
+  - type: location
+    icon: icon-location
+    text_value: 杭州
+
+link:
+  # - name: 织网
+  #   info: 身体和灵魂，总有一个在路上
+  #   url: http://zheng-ji.info/
+  #   avatar: https://avatars3.githubusercontent.com/u/1414745?v=3&s=100
+
+
+project:
+  - type: personal
+    name: python
+    url: https://github.com/BillQiu/learn-python
+    intro: learn process
