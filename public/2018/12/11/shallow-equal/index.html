@@ -7,26 +7,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>background八日谈第四日：background-size | Bill 的博客</title>
+  <title>react 中的浅比较 | Bill 的博客</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="CSS,background,background-size," />
+    <meta name="keywords" content="react," />
   
 
-  <meta name="description" content="简介background-size属性主要用来对background-image进行一系列的操作，功能很强大也非常有用。1234html &amp;#123;  background: url(greatimage.jpg);  background-size: 300px 100px;&amp;#125; 三种描述方式 单值 双值 多背景">
-<meta name="keywords" content="CSS,background,background-size">
+  <meta name="description" content="浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用PureComponent时，组件通过改变shouldComponentUpdate生命周期，自动检测props和 state 是否发生变化来决定是否重渲染。在这个过程中，对props和state就执行了浅相对（shallowEqual）判断。 重点在于如何理解“浅”字，通过阅读源码可以得出一个确切的结">
+<meta name="keywords" content="react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="background八日谈第四日：background-size">
-<meta property="og:url" content="http://billqiu.github.io/2016/05/13/background八日谈第四日：background-size/index.html">
+<meta property="og:title" content="react 中的浅比较">
+<meta property="og:url" content="http://billqiu.github.io/2018/12/11/shallow-equal/index.html">
 <meta property="og:site_name" content="Bill 的博客">
-<meta property="og:description" content="简介background-size属性主要用来对background-image进行一系列的操作，功能很强大也非常有用。1234html &amp;#123;  background: url(greatimage.jpg);  background-size: 300px 100px;&amp;#125; 三种描述方式 单值 双值 多背景">
+<meta property="og:description" content="浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用PureComponent时，组件通过改变shouldComponentUpdate生命周期，自动检测props和 state 是否发生变化来决定是否重渲染。在这个过程中，对props和state就执行了浅相对（shallowEqual）判断。 重点在于如何理解“浅”字，通过阅读源码可以得出一个确切的结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-07T09:28:07.393Z">
+<meta property="og:updated_time" content="2018-12-11T09:49:36.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="background八日谈第四日：background-size">
-<meta name="twitter:description" content="简介background-size属性主要用来对background-image进行一系列的操作，功能很强大也非常有用。1234html &amp;#123;  background: url(greatimage.jpg);  background-size: 300px 100px;&amp;#125; 三种描述方式 单值 双值 多背景">
+<meta name="twitter:title" content="react 中的浅比较">
+<meta name="twitter:description" content="浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用PureComponent时，组件通过改变shouldComponentUpdate生命周期，自动检测props和 state 是否发生变化来决定是否重渲染。在这个过程中，对props和state就执行了浅相对（shallowEqual）判断。 重点在于如何理解“浅”字，通过阅读源码可以得出一个确切的结">
 
   
 
@@ -161,22 +161,17 @@
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种描述方式"><span class="toc-text">三种描述方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单值-One-Value"><span class="toc-text">单值(One Value)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双值-Two-Values"><span class="toc-text">双值(Two Values)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多背景-Multiple-Images"><span class="toc-text">多背景(Multiple Images)</span></a></li></ol></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
-   <article id="post-background八日谈第四日：background-size" class="article article-type-post" itemprop="blogPost">
+   <article id="post-shallow-equal" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">background八日谈第四日：background-size</h1>
+    <h1 class="post-title">react 中的浅比较</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2016.05.13</span>
+        <span>2018.12.11</span>
       </span>
 
       
@@ -192,7 +187,7 @@
       
         <span>
           <i class="icon-comment"></i>
-          <a href="http://BillQiu.github.io/2016/05/13/background八日谈第四日：background-size/#disqus_thread"></a>
+          <a href="http://BillQiu.github.io/2018/12/11/shallow-equal/#disqus_thread"></a>
         </span>
       
 
@@ -211,29 +206,22 @@
 
   <div class="article-content">
     
-      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>background-size</code>属性主要用来对<code>background-image</code>进行一系列的操作，功能很强大也非常有用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">  background: url(greatimage.jpg);</span><br><span class="line">  background-size: 300px 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="三种描述方式"><a href="#三种描述方式" class="headerlink" title="三种描述方式"></a>三种描述方式</h2><ul>
-<li>单值</li>
-<li>双值</li>
-<li>多背景<a id="more"></a>
-<h3 id="单值-One-Value"><a href="#单值-One-Value" class="headerlink" title="单值(One Value)"></a>单值(One Value)</h3>单值的表示方式有两种：数值和关键字。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">    background: url(greatimage.jpg);</span><br><span class="line">    background-size: 300px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>仅仅用一个数值描述<code>background-size</code>，如果容器的宽高足够，最后的得到的背景图片必然为一个矩形。因为背景图片的宽度值被定义为300px后，由于没有为其定高，则高度值默认为<code>auto</code>，也就是300px。<br>在用数值定义<code>background-size</code>时，可以使用任意合适的<a href="https://css-tricks.com/the-lengths-of-css" target="_blank" rel="noopener">CSS长度单位</a>。</p>
-<p>同理也可以使用百分比来进行描述。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">    background: url(greatimage.jpg);</span><br><span class="line">    background-size: 50%;   //50%图片的大小</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>再说说常用的两个关键词<code>cover</code>与<code>contain</code>。</p>
-<ul>
-<li>cover：把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。背景图像的某些部分也许无法显示在背景定位区域中。</li>
-<li>contain： 把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。</li>
-</ul>
-<h3 id="双值-Two-Values"><a href="#双值-Two-Values" class="headerlink" title="双值(Two Values)"></a>双值(Two Values)</h3><p>可以设置任意两个数值来描述背景图片的大小，第一个表示的宽，第二个表示高。如果数值设置过大，会导致图片失真。</p>
-<h3 id="多背景-Multiple-Images"><a href="#多背景-Multiple-Images" class="headerlink" title="多背景(Multiple Images)"></a>多背景(Multiple Images)</h3><p>CSS3的多背景是一个非常棒的属性，可以为一个元素设置多个背景图片，但是其中也有一些问题需要注意。</p>
+      <p>浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用<code>PureComponent</code>时，组件通过改变<code>shouldComponentUpdate</code>生命周期，自动检测<code>props</code>和 state 是否发生变化来决定是否重渲染。在这个过程中，对<code>props</code>和<code>state</code>就执行了浅相对（shallowEqual）判断。</p>
+<p>重点在于如何理解“浅”字，通过阅读<a href="https://github.com/facebook/fbjs/blob/master/packages/fbjs/src/core/shallowEqual.js#L39-L67" target="_blank" rel="noopener">源码</a>可以得出一个确切的结论。</p>
 <ol>
-<li>背景图片层次结构。<br><iframe width="100%" height="300" src="//jsfiddle.net/bill_q/jem3xuga/1/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br>从上述代码中可以看出，背景图片有类似z-index的属性，最先声明的拥有最高的优先级，会把之后的声明的背景图片的重叠部分覆盖。</li>
-<li>单值、双值的方式可以混合使用，但注意要用逗号分隔。</li>
+<li><p>通过 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is" target="_blank" rel="noopener">Object.is()</a> 方法比较值 A, B 是否相等，如果相等，返回<code>true</code>。</p>
+<p>比较结果详见 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">MDN</a>。为了兼容性，react 使用了 Polyfill 来实现。</p>
+</li>
+<li><p>如果 A, B 中有个任何一个为<code>null</code>或者数据类型不是<code>object</code>，直接返回<code>false</code>。</p>
+</li>
+<li><p>如果 A, B 包含的键值对数量不同，直接返回<code>false</code>。</p>
+</li>
+<li><p>将 A, B 中的键值对一一对比，如果 B 存在 A 没有的键或者相同键对应的值不同，就返回<code>false</code>。</p>
+</li>
+<li><p>否则返回<code>true</code>。</p>
+</li>
 </ol>
-<p>TO BE CONTINUED!</p>
-<p>参考文献：<br><a href="https://css-tricks.com" target="_blank" rel="noopener">css-tricks</a></p>
+<p>源码其实很简答就能看明白，重点是对浅比较这个过程有了一个更清晰的了解。就拿<code>PureComponent</code>来说，之前我广义上的理解是：如果更新一个对象或数组，可能会发生一些渲染上的问题。现在可以清楚表达为：不能通过直接修改之前的引用值，而需要通过重新声明一个变量的方式（<code>Array.prototype.concat(), Object.assign()</code>），才能触发重渲染。</p>
 
     
   </div>
@@ -264,10 +252,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2016/05/09/background八日谈第三日：background-position/">
+    <a class="show pull-left" href="/2018/11/12/react-fiber/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2016/05/15/background八日谈第五日：background-clip/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -370,7 +358,7 @@
   <script>
     var disqus_shortname = 'forsigner';
     
-    var disqus_url = 'http://billqiu.github.io/2016/05/13/background八日谈第四日：background-size/';
+    var disqus_url = 'http://billqiu.github.io/2018/12/11/shallow-equal/';
     
     (function(){
       var dsq = document.createElement('script');
