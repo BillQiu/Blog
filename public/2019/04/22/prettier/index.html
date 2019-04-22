@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Prettier your project | Bill 的博客</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="prettier,web,code-format,">
+  
+
+  <meta name="description" content="简介 Prettier is an opinionated code formatter.  从官网的介绍中我们可以看到，首先 Prettier 的定位是一个代码格式化工具，并且比较任性（opinionated）。它移除了几乎所有[1]原始格式，来确保所有输出的代码符合一致。 就最初的设计目标来说，Prettier 面向的范围主要还是 Web 端的一些开发语言，如：  JSX  CSS, Less">
+<meta name="keywords" content="prettier,web,code-format">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prettier your project">
+<meta property="og:url" content="http://billqiu.github.io/2019/04/22/prettier/index.html">
+<meta property="og:site_name" content="Bill 的博客">
+<meta property="og:description" content="简介 Prettier is an opinionated code formatter.  从官网的介绍中我们可以看到，首先 Prettier 的定位是一个代码格式化工具，并且比较任性（opinionated）。它移除了几乎所有[1]原始格式，来确保所有输出的代码符合一致。 就最初的设计目标来说，Prettier 面向的范围主要还是 Web 端的一些开发语言，如：  JSX  CSS, Less">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-22T08:58:08.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prettier your project">
+<meta name="twitter:description" content="简介 Prettier is an opinionated code formatter.  从官网的介绍中我们可以看到，首先 Prettier 的定位是一个代码格式化工具，并且比较任性（opinionated）。它移除了几乎所有[1]原始格式，来确保所有输出的代码符合一致。 就最初的设计目标来说，Prettier 面向的范围主要还是 Web 端的一些开发语言，如：  JSX  CSS, Less">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要用"><span class="toc-text">为什么要用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对新人友好"><span class="toc-text">对新人友好</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#易于适应"><span class="toc-text">易于适应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于未来"><span class="toc-text">关于未来</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与-Eslint"><span class="toc-text">与 Eslint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#比较"><span class="toc-text">比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#统一代码风格"><span class="toc-text">统一代码风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化代码"><span class="toc-text">格式化代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集成"><span class="toc-text">集成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计原则"><span class="toc-text">设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正确性（Correctness）"><span class="toc-text">正确性（Correctness）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#易读性"><span class="toc-text">易读性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尾声"><span class="toc-text">尾声</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-prettier" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Prettier your project</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.04.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bill Qiu</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://BillQiu.github.io/2019/04/22/prettier/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Prettier is an opinionated code formatter.</p>
+</blockquote>
+<p>从官网的介绍中我们可以看到，首先 Prettier 的定位是一个<strong>代码格式化</strong>工具，并且比较任性（opinionated）。它移除了<strong>几乎所有[1]</strong>原始格式，来确保所有输出的代码符合一致。</p>
+<p>就最初的设计目标来说，Prettier 面向的范围主要还是 Web 端的一些开发语言，如：</p>
+<ul>
+<li><a href="https://facebook.github.io/jsx/" target="_blank" rel="noopener">JSX</a> </li>
+<li>CSS, <a href="http://lesscss.org/" target="_blank" rel="noopener">Less</a> , and <a href="http://sass-lang.com/" target="_blank" rel="noopener">SCSS</a> </li>
+<li><a href="http://graphql.org/" target="_blank" rel="noopener">GraphQL</a> </li>
+<li>等…<br>不过作为一款代码格式化工具，Prettier 通过开放了插件（Beta）的能力，来对不同语言提供支持。</li>
+</ul>
+<h2 id="为什么要用"><a href="#为什么要用" class="headerlink" title="为什么要用"></a>为什么要用</h2><p>对于代码风格的圣战，没有一天真正停止过：</p>
+<ul>
+<li>Tab V.S. space</li>
+<li>single V.S. double quote</li>
+<li>Semicolons</li>
+<li>…<br>就个人角度来说，这些争论有意义吗？我觉得是有的，因为不仅体现了一个程序员对细节的追求，还锻炼了探索、深挖、求真的能力。但是就团队的角度来说，我觉得这些争论是没有意义的，个人代码的风格大相径庭，从 ESlint 的规则数量就可以明显地看出这一点。如果从个人代码风格的角度出发，制定一套适用于团队层面的规范，讨论到最后，很难有一个统一的结果。<br>所以，为了统一团队代码风格，确实需要任性（opinionated），才能真正落地。</li>
+</ul>
+<h3 id="对新人友好"><a href="#对新人友好" class="headerlink" title="对新人友好"></a>对新人友好</h3><p>当有新人进入一个团队时，他不仅需要熟悉业务流程，兼顾遗留代码，如果在开发时还被一系列的<strong>格式化</strong>代码规则磕磕绊绊，是非常不友好的一件事。而通过配置 Prettier，按下一个按键就可以直接将代码格式化，不需要为了适配各种规则手动修改，能将更多精力放在代码质量层面。</p>
+<h3 id="易于适应"><a href="#易于适应" class="headerlink" title="易于适应"></a>易于适应</h3><p>除了一些非常有争议的风格作为配置项，Prettier 内置的规则经过了多次修改讨论，对于大多数开发者来说，是比较容易接受的。</p>
+<h3 id="关于未来"><a href="#关于未来" class="headerlink" title="关于未来"></a>关于未来</h3><p>我们引入一个新工具，肯定希望它是稳步上升的，如果用到一半就被废弃，后续的解耦成本就会成为一个新的问题。<br>所以一个工具的未来如何一个非常重要的考量点：</p>
+<ul>
+<li>作为一个 Facebook 出品的工具，其雄厚的技术实力肯定是我们不容小觑的。</li>
+<li>在 GitHub 上的 star 数，是老大哥 ESlint 的三倍之多，说明关注这个项目的人非常多。</li>
+<li>再看项目的更新进度，基本每 1 - 2 天就会有新的提交，这个迭代速度说明更新以及问题解决的响应非常快。</li>
+<li>还有 npm 上的下载量，达到了 400 万次 / 周，说明真正在使用的人也非常多。<br>从以上种种看出，这个项目的未来是充满光明的。</li>
+</ul>
+<h2 id="与-Eslint"><a href="#与-Eslint" class="headerlink" title="与 Eslint"></a>与 Eslint</h2><h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>每当提到 Prettier，ESlint 一定是一个绕不过去坎。甚至有人觉得两者是冲突的，是包含与被包含的关系。但是在我看来，他们只是存在某些功能上的重合，硬要从这个角度来说，顶多也是存在交集的关系。</p>
+<p>要搞清楚两者的关系，可以先从定义上解读它们之间的区别：</p>
+<ul>
+<li>Prettier 的定位是一个代码格式化工具（code formatter），其侧重点在于格式化（format），其目的是让你的代码变得更好看（prettier），可读（readable）。</li>
+<li>ESlint 的定位一个校验工具（linting utility），其侧重点在于校验，其目的是让代码更一致和避免 bug。<blockquote>
+<p>ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.</p>
+</blockquote>
+</li>
+</ul>
+<p>简单来看，它们相同的地方主要有以下几点：</p>
+<ol>
+<li>都期望能够减少甚至避免产生 bug。</li>
+<li>都期望统一代码风格。</li>
+<li>都具备格式化代码的功能。</li>
+</ol>
+<h4 id="统一代码风格"><a href="#统一代码风格" class="headerlink" title="统一代码风格"></a>统一代码风格</h4><p>ESlint 规则成千上万，主要可以分为两大类：</p>
+<ol>
+<li>格式化代码规则（Formatting rules）：如  <a href="http://eslint.org/docs/rules/max-len" target="_blank" rel="noopener">max-len</a> , <a href="http://eslint.org/docs/rules/no-mixed-spaces-and-tabs" target="_blank" rel="noopener">no-mixed-spaces-and-tabs</a> , <a href="http://eslint.org/docs/rules/keyword-spacing" target="_blank" rel="noopener">keyword-spacing</a> , <a href="http://eslint.org/docs/rules/comma-style" target="_blank" rel="noopener">comma-style</a> …</li>
+<li>代码质量规则（Code-quality rules）：如  <a href="http://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener">no-unused-vars</a> , <a href="http://eslint.org/docs/rules/no-extra-bind" target="_blank" rel="noopener">no-extra-bind</a> , <a href="http://eslint.org/docs/rules/no-implicit-globals" target="_blank" rel="noopener">no-implicit-globals</a> , <a href="http://eslint.org/docs/rules/prefer-promise-reject-errors" target="_blank" rel="noopener">prefer-promise-reject-errors</a> …</li>
+</ol>
+<p>理想情况下，如果 ESlint 规则设置的足够细致，基本能保证两个不同的开发者——采用相同的技术方案——在代码风格上 90% 的一致性。<br>但是对于 Prettier 来说，它工作的领域仅限于第一类——格式化代码，也就是说即使存在严重影响代码质量（Code-quality）的问题——比如<a href="https://eslint.org/docs/rules/for-direction" target="_blank" rel="noopener">死循环</a>——Prettier 不会做出任何反应。原因将会在下文中做出（Rationale）说明。</p>
+<h4 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h4><p>ESlint 本身是一个代码校验工具，但是也提供了格式化代码的功能，通过添加 <code>--fix</code> 参数，可以将代码格式成符合自定义规则的样子。<br>Prettier 作为专业的格式化工具，内部自建了一套关于代码风格的规则，且这些规则无法被修改，除了暴露出的 19 个的配置项。这么做的目的，就是为了停止对各种个性化风格优劣的争论，从而将讨论的重点转移到这 19 个配置项中。</p>
+<h3 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h3><p>在我们的日常开发过程中，已经习惯了使用 ESlint 来保障代码质量与统一风格。如果再加上 Prettier 作为代码格式化的工具，就可以起到如虎添翼的效果。但是因为 Prettier 内建的规则可能和 ESlint 的规则产生冲突，所以需要通过配置插件来解决这些问题。</p>
+<ul>
+<li>Eslint 检验自定义规则的同时，还能支持 Prettier 的规则；</li>
+<li>我们希望 Prettier 格式化后的代码是符合 Eslint 规则的，但是因为 Prettier 内建规则是无法修改的，所以当两种的规则冲突时，需要以 Prettier 的规则为主。</li>
+</ul>
+<p>通过下面的步骤可以达到上述条件所描述的：</p>
+<ol>
+<li><p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev eslint-config-prettier eslint-plugin-prettier</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 ESlint 配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// .eslintrc.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: [<span class="string">"plugin:prettier/recommended"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果在项目中使用 Prettier，我们当然不希望每次都要手动去执行格式化的命令，通过定制 <code>pre-commit</code> 钩子，可以达到自动格式化的效果，详见<a href="https://prettier.io/docs/en/precommit.html" target="_blank" rel="noopener">文档</a>。<br>我个人最常用的是 <code>pretty-quick</code>，开箱即用。配置好后，每次将文件提交到 git 暂存区（stage）之前，都会自动对所有文件做格式化。这样一来，只要开发者按照规范 [2] 的流程走，就避免了代码格式不一致问题。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add pretty-quick husky --dev</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// package.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"pretty-quick --staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了通过使用 git hooks 的方式来格式化代码，也可以在编写代码的过程中，直接对其进行格式化。以 VSCode 为例：</p>
+<ol>
+<li>需要安装  <a href="https://github.com/prettier/prettier-vscode" target="_blank" rel="noopener">prettier-vscode</a> 插件。</li>
+<li>自定义格式化配置<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"editor.formatOnType"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"editor.formatOnPaste"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这一步也可以通过 <a href="https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle" target="_blank" rel="noopener">Formatting Toggle</a> 插件来实现。</p>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="正确性（Correctness）"><a href="#正确性（Correctness）" class="headerlink" title="正确性（Correctness）"></a>正确性（Correctness）</h3><p>第一原则。作为一个代码格式化工具，如果想要让别人用的放心，在保证格式化代码后不会出现 bug 的同时，也必不能对原代码做任何入侵。这就是上文中提到的，即使出现了 bug，Prettier 也不会做出反应，<strong>仅</strong>关注如何更好地代码的原因。<code>eslint --fix</code> 则不同，它会去格式化那些违反规则的代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">''</span> + value;</span><br><span class="line"><span class="comment">// after eslint --fix</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;value&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">&#123; <span class="attr">color</span>: color &#125; </span><br><span class="line"><span class="comment">// after eslint --fix</span></span><br><span class="line">&#123; color &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;</span><br><span class="line"><span class="comment">// after eslint --fix</span></span><br><span class="line"><span class="keyword">const</span> a = &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>保证正确性的另一个方面，就是能够提前预知格式化后可能会产生的 bug。看下面一个例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// semi.js</span></span><br><span class="line"><span class="keyword">if</span> (shouldAddLines) &#123;</span><br><span class="line">  [<span class="number">-1</span>, <span class="number">1</span>].forEach(<span class="function"><span class="params">delta</span> =&gt;</span> addLine(delta * <span class="number">20</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过 <code>prettier semi.js --no-semi</code>命令对上述代码格式化，最后得到的结果是这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (shouldAddLines) &#123;</span><br><span class="line">  ;[<span class="number">-1</span>, <span class="number">1</span>].forEach(<span class="function"><span class="params">delta</span> =&gt;</span> addLine(delta * <span class="number">20</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看上去似乎不符合规则，其实这么做事为了避免下述情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span> (shouldAddLines) &#123;</span><br><span class="line">+  <span class="built_in">console</span>.log(<span class="string">'Do we even get here??'</span>)</span><br><span class="line">   [<span class="number">-1</span>, <span class="number">1</span>].forEach(<span class="function"><span class="params">delta</span> =&gt;</span> addLine(delta * <span class="number">20</span>))</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// after fomate </span></span><br><span class="line"><span class="keyword">if</span> (shouldAddLines) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Do we even get here??'</span>)[<span class="number">-1</span>, <span class="number">1</span>].forEach(<span class="function"><span class="params">delta</span> =&gt;</span> addLine(delta * <span class="number">20</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的例子，说明了 Prettier 并非通过一刀切的方式对代码进行格式化，还会考虑格式化后的代码，在具体的应用场景中会如何。</p>
+<h3 id="易读性"><a href="#易读性" class="headerlink" title="易读性"></a>易读性</h3><p>在我们日常开发的过程中，经常会遇到一些涉及性能的问题。解法很多，但是我一般会选择更加容易让人看懂的那种。也就是说在一般情况下，为了代码的可维护性是可以牺牲一部分性能的。<br><strong>格式化代码不是目的，目的是为了让代码更加易读</strong>。可以通过以下几个列子看出 Prettier 是如何遵守这一规则的：</p>
+<ol>
+<li>多行对象<br>对象的书写方式一般由以下两种：短对象可以写在一行里，而一些长对象或者类 CSS 对象我们习惯多行书写。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// single-line</span></span><br><span class="line"><span class="keyword">const</span> user = &#123; <span class="attr">name</span>: <span class="string">"John Doe"</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// multi-line</span></span><br><span class="line"><span class="keyword">const</span> css = &#123;</span><br><span class="line">	fontSize: <span class="number">12</span>,</span><br><span class="line">	color: <span class="string">"red"</span>,</span><br><span class="line">	padding: <span class="number">100</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>但是如果仅仅通过长短来格式化，就无法针对不同类型的对象做格式化处理，Prettier 也考虑到了这一点，可以通过下面的方式来自己选想要的格式化结果。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line"><span class="keyword">const</span> use = &#123; <span class="attr">name</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">	age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// after</span></span><br><span class="line"><span class="keyword">const</span> user = &#123; <span class="attr">name</span>: <span class="string">"John Doe"</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ---</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// before</span></span><br><span class="line"><span class="keyword">const</span> use = &#123;</span><br><span class="line">	name: <span class="string">"John Doe"</span>,</span><br><span class="line">	age: <span class="number">18</span> &#125;;</span><br><span class="line"><span class="comment">// after</span></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="string">"John Doe"</span>,</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>测试方法<br>在一些测试方法中，可能必有比较长的描述说明，导致长度（Print Width）超过了既定值。但是 Prettier 并不会去做强制换行处理，因为这样做是没有意义的，只会降低可读性。</p>
+</li>
+<li><p>易加难减<br>到目前位置，Prettier 的配置规则仅仅只有 19 条，虽然添加一个规则不是什么难事，但是如果要将规则删除，就存在很大的问题了。你可以试想下如果将来某一天 Prettier 的一条规则被删除了，会发生什么？以 <a href="https://prettier.io/docs/en/options.html#bracket-spacing" target="_blank" rel="noopener">bracket-spacing</a>为例：<br>在删除之前，无论我的配置是 true or false，格式化话后的对象都是遵循一定规则的：</p>
+<ul>
+<li><code>true</code>   - Example: <code>{ foo: bar }</code>.</li>
+<li><code>false</code> - Example: <code>{foo: bar}</code>.<br>但是如果规则被删除，不复存在了，你的代码中可能会存在 <code>{foo: bar, }</code> 这样的结果，这是大家都不愿意看到的。就拿 PR 来说，我在代码比对的过程中看到的这个属于格式上的不统一，在我引入了 Prettier 之后，这个问题理应是不会存在的，渐渐大家就会失去对这个工具的信任。</li>
+</ul>
+</li>
+</ol>
+<p>为什么要举 bracket-spacing 这个例子哪，因为这是一个<a href="https://github.com/prettier/prettier/issues/715#issuecomment-281096495" target="_blank" rel="noopener">连 Prettier 的作者也不知道为什么会存在的配置规则</a>，但是它现在依旧存在着。</p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>最后，借用我偶像 Dan 对 Prettier 的一段<a href="https://github.com/prettier/prettier/issues/40" target="_blank" rel="noopener">描述</a>来结尾：</p>
+<blockquote>
+<p>I just wanted to take a moment to say there are some of us who actually appreciate tools with limited scope that don’t attempt to solve everybody’s use case, and instead do a specific thing well.</p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>[1]  不格式化的某些情况下的 empty lines 以及 multi-line object</li>
+</ul>
+<ul>
+<li>[2] 之所以强调规范一词，是因为笔者曾经遇到过，有开发者因为代码校验无法通过，通过直接删除 node_modules，使 git 钩子无效化的方式强制推送代码。</li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，请我喝杯咖啡☕️</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt>
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/12/25/christmas-egg/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/category/" rel="noopener noreferrer" target="_self">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://billqiu.github.io/2019/04/22/prettier/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
