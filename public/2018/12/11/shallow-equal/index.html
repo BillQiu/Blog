@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Bill 的博客">
 <meta property="og:description" content="浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用PureComponent时，组件通过改变shouldComponentUpdate生命周期，自动检测props和 state 是否发生变化来决定是否重渲染。在这个过程中，对props和state就执行了浅相对（shallowEqual）判断。 重点在于如何理解“浅”字，通过阅读源码可以得出一个确切的结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-11T09:49:36.052Z">
+<meta property="og:updated_time" content="2019-05-07T10:43:19.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react 中的浅比较">
 <meta name="twitter:description" content="浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用PureComponent时，组件通过改变shouldComponentUpdate生命周期，自动检测props和 state 是否发生变化来决定是否重渲染。在这个过程中，对props和state就执行了浅相对（shallowEqual）判断。 重点在于如何理解“浅”字，通过阅读源码可以得出一个确切的结">
@@ -183,17 +183,19 @@
     
       <p>浅比较（shadow comparison）是 react 中经常会提到的一个概念，比如我们使用<code>PureComponent</code>时，组件通过改变<code>shouldComponentUpdate</code>生命周期，自动检测<code>props</code>和 state 是否发生变化来决定是否重渲染。在这个过程中，对<code>props</code>和<code>state</code>就执行了浅相对（shallowEqual）判断。</p>
 <p>重点在于如何理解“浅”字，通过阅读<a href="https://github.com/facebook/fbjs/blob/master/packages/fbjs/src/core/shallowEqual.js#L39-L67" target="_blank" rel="noopener">源码</a>可以得出一个确切的结论。</p>
+<p>如何通过浅比较 A, B 得出是否相等：</p>
 <ol>
 <li><p>通过 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is" target="_blank" rel="noopener">Object.is()</a> 方法比较值 A, B 是否相等，如果相等，返回<code>true</code>。</p>
-<p>比较结果详见 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">MDN</a>。为了兼容性，react 使用了 Polyfill 来实现。</p>
+<p>比较结果详见 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">MDN</a>。考虑兼容性，react 使用了 Polyfill 。</p>
 </li>
 <li><p>如果 A, B 中有个任何一个为<code>null</code>或者数据类型不是<code>object</code>，直接返回<code>false</code>。</p>
+<p>Object.is 方法用于对<strong>基本数据类型</strong>做一个精确的比较，如果发生误判，仅可能是 object 类型。但如果其中一个不是 object，就不可能相等了。</p>
 </li>
-<li><p>如果 A, B 包含的键值对数量不同，直接返回<code>false</code>。</p>
+<li><p>如果 A, B 包含的顶层键值对数量不同，直接返回<code>false</code>。</p>
 </li>
 <li><p>将 A, B 中的键值对一一对比，如果 B 存在 A 没有的键或者相同键对应的值不同，就返回<code>false</code>。</p>
 </li>
-<li><p>否则返回<code>true</code>。</p>
+<li><p>使用反证法，通过所有不相等判断之后，只能是相等的，返回<code>true</code>。</p>
 </li>
 </ol>
 <p>源码其实很简答就能看明白，重点是对浅比较这个过程有了一个更清晰的了解。就拿<code>PureComponent</code>来说，之前我广义上的理解是：如果更新一个对象或数组，可能会发生一些渲染上的问题。现在可以清楚表达为：不能通过直接修改之前的引用值，而需要通过重新声明一个变量的方式（<code>Array.prototype.concat(), Object.assign()</code>），才能触发重渲染。</p>

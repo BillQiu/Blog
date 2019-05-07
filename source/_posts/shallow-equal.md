@@ -10,17 +10,21 @@ tags: [react]
 
 
 
+如何通过浅比较 A, B 得出是否相等：
+
 1. 通过 [Object.is()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 方法比较值 A, B 是否相等，如果相等，返回`true`。
 
-   比较结果详见 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。为了兼容性，react 使用了 Polyfill 来实现。
+   比较结果详见 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。考虑兼容性，react 使用了 Polyfill 。
 
 2. 如果 A, B 中有个任何一个为`null`或者数据类型不是`object`，直接返回`false`。
 
-3. 如果 A, B 包含的键值对数量不同，直接返回`false`。
+   Object.is 方法用于对**基本数据类型**做一个精确的比较，如果发生误判，仅可能是 object 类型。但如果其中一个不是 object，就不可能相等了。
+
+3. 如果 A, B 包含的顶层键值对数量不同，直接返回`false`。
 
 4. 将 A, B 中的键值对一一对比，如果 B 存在 A 没有的键或者相同键对应的值不同，就返回`false`。
 
-5. 否则返回`true`。
+5. 使用反证法，通过所有不相等判断之后，只能是相等的，返回`true`。
 
 
 
